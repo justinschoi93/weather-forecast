@@ -8,25 +8,33 @@ var searchBarEl = $('.search-bar').on('keydown', function (event){
     if (event.key === 'Enter'){
         // console.log(event);
         // console.log(searchBarEl.val());
+        var cityEl = $(searchBarEl).val();
+        var newCityEl = document.createElement('li');
+        newCityEl.textContent = cityEl;
+        searchHistory.append(newCityEl);
 
-        var cityEl = document.createElement('li');
-        cityEl.textContent = $(searchBarEl).val();
-        searchHistory.append(cityEl);
+        var coordinates = getCoordinates(cityEl);
+        console.log(getCoordinates(cityEl));
+        // console.log(coordinates);
+        // checkWeather(coordinates[0], coordinates[1]);
     }
     
 });
 
 
-function getCoordinates (cityName, limit){
+function getCoordinates (cityName){
     var requestURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=&appid=0b2949d3ba17a6aec298126cb969f7dc';
+    var result = [];
     
     fetch(requestURL)
     .then(function(response){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
-        // return data;
+        
+        result = [data[0].lat, data[0].lon];
+        // console.log(result);
+        return result;
        
 
     })
@@ -47,8 +55,8 @@ function checkWeather (lat, lon){
     })
 }
 
-getCoordinates('Tokyo');
-checkWeather(35.6828387, 139.7594549);
+// getCoordinates('Tokyo');
+// checkWeather(35.6828387, 139.7594549);
 //1. get coordinates using geocoding API
 //2. use cooridnates and weatherAPI to get weather data
 //3. save and display weather data
