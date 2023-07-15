@@ -40,6 +40,7 @@ searchBtn.on('click', function (){
 
 //a function that uses an API to get the coordinates of a city by it's name. 
 ////adds lat and lon of city to cityData
+//it also calls the checkWeather()
 var cityData = [];
 
 function getCoordinates (cityName){
@@ -69,8 +70,9 @@ function getCoordinates (cityName){
     
 };
 
-// console.log(getCoordinates('Seoul'));
-//a function that accepts a set of coordinates, and returns weather data, ready to be parsed. 
+
+//a function that accepts the name of a city, and stores weather data in the cityData object.
+//it also intiates the displayData() 
 function checkWeather (cityName){
     var lat = cityData[cityName]['lat'];
     var lon = cityData[cityName]['lon'];
@@ -86,10 +88,8 @@ function checkWeather (cityName){
         return response.json();
     })
     .then(function(data){
-        
-
         for (let i = 0; i < 5; i++){
-            // console.log(data.list[i]);
+            
 
             var newObj = {'day': i};
             
@@ -99,9 +99,7 @@ function checkWeather (cityName){
             console.log(data.list[i]);
             
             cityWeatherData.push(newObj);
-        };
-        
-        
+        }; 
        cityData[cityName].weatherData = cityWeatherData;
        displayData(cityName)
        localStorage.setItem(cityName, JSON.stringify(cityData[cityName]));
@@ -111,7 +109,7 @@ function checkWeather (cityName){
     
 
 }
-
+//a function that accepts the name of a city as a parameter, and displays weather information for that city in the forecast window. 
 function displayData (cityName){
     var weatherData = cityData[cityName].weatherData
     $('.forecast-window').empty();
