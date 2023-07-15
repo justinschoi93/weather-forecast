@@ -1,30 +1,55 @@
+var cityData = [];
+var forecastWindow = $('.forecast-window');
 
-
-
+//searchHistory window
+////assigned event listener, will search city upon click. 
 var searchHistory = $('.search-history');
-//when the return key is hit, the text content within the search bar will be added to the search history
-//
-var searchBarEl = $('.search-bar');
-var submitBtn = $('.submit');
+searchHistory.on('click', function(event){
+    var cityName = event.target.innerText;
 
-submitBtn.on('click', function (){
+    getCoordinates(cityName);
+    
+});
+
+//the search bar & submit button
+var searchBarEl = $('.search-bar');
+var searchBtn = $('.search-button');
+
+//UPON CLICK, the search button will...
+////get the coordinates of the city
+////get 5 days worth of weather data for that city. 
+////store weather data for that city in cityData
+////diplay weather data
+searchBtn.on('click', function (){
+
     var cityEl = searchBarEl.val();
     var newCityEl = document.createElement('li');
-    newCityEl.textContent = cityEl;
-    // console.log(newCityEl)
     
+    newCityEl.textContent = cityEl;
     searchHistory.append(newCityEl);
     
-    //why aren't the coordinates getting saved to the result variable?
-    var result = getCoordinates(cityEl);
-    console.log(result);
-    
+    var cities = Object.keys(cityData);
+
+    if (!cities.includes(cityEl)){
+        cityData[cityEl] = {};
+    }
+
+    getCoordinates(cityEl);
     
 })
 
+//a function that uses an API to get the coordinates of a city by it's name. 
+////adds lat and lon of city to cityData
+var cityData = [];
 
-function getCoordinates (cityEl){
-    var requestURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityEl + '&limit=&appid=0b2949d3ba17a6aec298126cb969f7dc';
+function getCoordinates (cityName){
+    var cities = Object.keys(cityData);
+    
+    if (!cities.includes(cityName)){
+        cityData[cityName] = {};
+    }
+
+    var requestURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + cityName + '&limit=&appid=0b2949d3ba17a6aec298126cb969f7dc';
     
     
     fetch(requestURL)
@@ -32,33 +57,116 @@ function getCoordinates (cityEl){
         return response.json();
     })
     .then(function(data){
-        var result = [data[0].lat, data[0].lon];
-        return result;
+        cityData[cityName].lat = data[0].lat;
+        cityData[cityName].lon = data[0].lon;
+
+        checkWeather(cityName);
     })
+
+    // console.log(cityData);
+
+    localStorage.setItem(cityName, JSON.stringify(cityData[cityName]));
+    
 };
 
+// console.log(getCoordinates('Seoul'));
+//a function that accepts a set of coordinates, and returns weather data, ready to be parsed. 
+function checkWeather (cityName){
+    var lat = cityData[cityName]['lat'];
+    var lon = cityData[cityName]['lon'];
 
+    // console.log(lat, lon);
+    var cityWeatherData = [];
 
-function checkWeather (lat, lon){
-    var requestURL = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon + '&appid=0b2949d3ba17a6aec298126cb969f7dc';
-
+    var requestURL = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon + '&units=metric&appid=0b2949d3ba17a6aec298126cb969f7dc';
+    
+    
     fetch(requestURL)
     .then(function(response){
         return response.json();
     })
     .then(function(data){
-        //if city is not already a list item... 
-        console.log(data);
+        
+
+        for (let i = 0; i < 5; i++){
+            // console.log(data.list[i]);
+
+            var newObj = {'day': i};
+            
+            newObj['temp'] = data.list[i].main.temp;
+            newObj['humidity'] = data.list[i].main.humidity;
+            newObj['wind'] = data.list[i].wind.speed;
+            console.log(data.list[i]);
+            
+            cityWeatherData.push(newObj);
+        };
+        
+        
+       cityData[cityName].weatherData = cityWeatherData;
+       displayData(cityName)
+       localStorage.setItem(cityName, JSON.stringify(cityData[cityName]));
+       
     })
+    
+    
+
 }
 
-// getCoordinates('Tokyo');
-// checkWeather(35.6828387, 139.7594549);
-//1. get coordinates using geocoding API
-//2. use cooridnates and weatherAPI to get weather data
-//3. save and display weather data
+function displayData (cityName){
+    var weatherData = cityData[cityName].weatherData
+    $('.forecast-window').empty();
+    
 
 
-//1. search bar input will be used to retrieve coordinates
-//2. coordinates will be used to retrieve weather data
-//3. weather data will be displayed
+ for (let i = 0; i < weatherData.length; i++){
+    
+    // console.log(weatherData[i]);
+    
+    var dayCard = $('<div>').attr('class', 'day-' + i);;
+    
+    var dayNum = $('<div>').attr('class', 'num');
+    if (i === 0){
+        dayNum.text('Today');
+    } else if (i === 1) {
+        dayNum.text('Tomorrow')
+    } else if (i === 2) {
+        dayNum.text('The day after tomorrow')
+    } else if (i === 3) {
+        dayNum.text('The day after the day after tomorrow')
+    } else if (i === 4) {
+        dayNum.text('The day after the day after the day after tomorrow')
+    };
+    
+    
+    var dayTemp = $('<div>').attr('class', 'temp');
+    dayTemp.text('temperature: ' + weatherData[i].temp + ' degrees Celcius');
+
+    var dayHumidity = $('<div>').attr('class', 'humidity');
+    dayHumidity.text('humidity: ' + weatherData[i].humidity);
+
+    var dayWind = $('<div>').attr('class', 'wind');
+    dayWind.text('wind: ' + weatherData[i].wind);
+
+    dayCard.append(dayNum).append(dayTemp).append(dayHumidity).append(dayWind);
+    forecastWindow.append(dayCard);
+    
+ }
+ 
+}
+
+
+
+
+
+function setCityDataLocalStorage(cityData){
+    localStorage.setItem('cityData', JSON.stringify(cityData));
+}
+
+function getLocalStorage(){
+    return JSON.parse(localStorage.getItem(cityData));
+}
+
+//once cityData is all up to date
+//iterate through the appropriate cityData obj
+//as you iterate, .createElement and .append into appropriate div by day
+//

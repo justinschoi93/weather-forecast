@@ -1,0 +1,11 @@
+.weather-data {
+    background-color: black;
+}
+
+.forecast {
+    background-color: aqua;
+}
+
+.forecast > div {
+    display: hidden;
+}
