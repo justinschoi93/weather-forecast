@@ -1,9 +1,11 @@
+//the array in which all our city and weather data will be stored. 
 var cityData = [];
+//the display window.
 var forecastWindow = $('.forecast-window');
 
 //searchHistory window
-////assigned event listener, will search city upon click. 
 var searchHistory = $('.search-history');
+////assigned event listener, will search city upon click. 
 searchHistory.on('click', function(event){
     var cityName = event.target.innerText;
 
@@ -64,7 +66,6 @@ function getCoordinates (cityName){
         checkWeather(cityName);
     })
 
-    // console.log(cityData);
 
     localStorage.setItem(cityName, JSON.stringify(cityData[cityName]));
     
@@ -72,12 +73,11 @@ function getCoordinates (cityName){
 
 
 //a function that accepts the name of a city, and stores weather data in the cityData object.
-//it also intiates the displayData() 
+//it also calls the displayData() 
 function checkWeather (cityName){
     var lat = cityData[cityName]['lat'];
     var lon = cityData[cityName]['lon'];
 
-    // console.log(lat, lon);
     var cityWeatherData = [];
 
     var requestURL = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat +'&lon='+ lon + '&units=metric&appid=0b2949d3ba17a6aec298126cb969f7dc';
@@ -118,8 +118,6 @@ function displayData (cityName){
 
  for (let i = 0; i < weatherData.length; i++){
     
-    // console.log(weatherData[i]);
-    
     var dayCard = $('<div>').attr('class', 'day-' + i);;
     
     var dayNum = $('<div>').attr('class', 'num');
@@ -135,7 +133,7 @@ function displayData (cityName){
         dayNum.text('The day after the day after the day after tomorrow')
     };
     
-    
+
     var dayTemp = $('<div>').attr('class', 'temp');
     dayTemp.text('temperature: ' + weatherData[i].temp + ' degrees Celcius');
 
@@ -152,10 +150,7 @@ function displayData (cityName){
  
 }
 
-
-
-
-
+//functions that store and retrieve data from localStorage. 
 function setCityDataLocalStorage(cityData){
     localStorage.setItem('cityData', JSON.stringify(cityData));
 }
@@ -164,7 +159,3 @@ function getLocalStorage(){
     return JSON.parse(localStorage.getItem(cityData));
 }
 
-//once cityData is all up to date
-//iterate through the appropriate cityData obj
-//as you iterate, .createElement and .append into appropriate div by day
-//
