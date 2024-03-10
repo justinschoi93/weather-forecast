@@ -1,4 +1,10 @@
+*{
+    background-color: #274fef
+}
 
+#sidebar {
+    background-color: green;
+}
 .forecast {
     background-color: aqua;
 }

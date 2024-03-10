@@ -4,47 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header></header>
     <section id="sidebar">
-        <div id = "search-bar"></div>
+        <div id = "search-bar">
+            <label for="city-search">Search for City</label>
+            <input type="search" id="city-search" name="city">
+            <button>Search</button>
+        </div>
         <div id = "recent-history"></div>
     </section>
     <section id="main">
         <div id = "today">
             <div id = "current">
-                <div class = "icon"></div>
-                <div class = "temperature"></div>
-                <div class = "wind"></div>
-                <div class = "humidity"></div>
+                <div class = "icon">icon</div>
+                <div class = "temperature">degrees</div>
+                <div class = "wind">wind</div>
+                <div class = "humidity">humidity</div>
             </div>
-            <div class = "hour">12:00 AM</div>
-            <div class = "hour">1:00 AM</div>
-            <div class = "hour">2:00 AM</div>
-            <div class = "hour">3:00 AM</div>
-            <div class = "hour">4:00 AM</div>
-            <div class = "hour">5:00 AM</div>
-            <div class = "hour">6:00 AM</div>
-            <div class = "hour">7:00 AM</div>
-            <div class = "hour">8:00 AM</div>
-            <div class = "hour">9:00 AM</div>
-            <div class = "hour">10:00 AM</div>
-            <div class = "hour">11:00 AM</div>
-            <div class = "hour">12:00 AM</div>
-            <div class = "hour">1:00 PM</div>
-            <div class = "hour">2:00 PM</div>
-            <div class = "hour">3:00 PM</div>
-            <div class = "hour">4:00 PM</div>
-            <div class = "hour">5:00 PM</div>
-            <div class = "hour">6:00 PM</div>
-            <div class = "hour">7:00 PM</div>
-            <div class = "hour">8:00 PM</div>
-            <div class = "hour">9:00 PM</div>
-            <div class = "hour">10:00 PM</div>
-            <div class = "hour">11:00 PM</div>
+            <div id="hourly">
+                <div class = "hour">12:00 AM</div>
+                <div class = "hour">1:00 AM</div>
+                <div class = "hour">2:00 AM</div>
+                <div class = "hour">3:00 AM</div>
+                <div class = "hour">4:00 AM</div>
+                <div class = "hour">5:00 AM</div>
+                <div class = "hour">6:00 AM</div>
+                <div class = "hour">7:00 AM</div>
+                <div class = "hour">8:00 AM</div>
+                <div class = "hour">9:00 AM</div>
+                <div class = "hour">10:00 AM</div>
+                <div class = "hour">11:00 AM</div>
+                <div class = "hour">12:00 AM</div>
+                <div class = "hour">1:00 PM</div>
+                <div class = "hour">2:00 PM</div>
+                <div class = "hour">3:00 PM</div>
+                <div class = "hour">4:00 PM</div>
+                <div class = "hour">5:00 PM</div>
+                <div class = "hour">6:00 PM</div>
+                <div class = "hour">7:00 PM</div>
+                <div class = "hour">8:00 PM</div>
+                <div class = "hour">9:00 PM</div>
+                <div class = "hour">10:00 PM</div>
+                <div class = "hour">11:00 PM</div>
+            </div>
         </div>
-        <div id = "week"></div>
+        <div id = "week">
+            <div class="day">Sunday</div>
+            <div class="day">Monday</div>
+            <div class="day">Tuesday</div>
+            <div class="day">Wednesday</div>
+            <div class="day">Thursday</div>
+            <div class="day">Friday</div>
+            <div class="day">Saturday</div>
+
+        </div>
 
     </section>
     <footer></footer>
