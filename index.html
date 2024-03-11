@@ -12,19 +12,28 @@
         <div id = "search-bar">
             <label for="city-search">Search for City</label>
             <input type="search" id="city-search" name="city">
-            <button>Search</button>
+            <button type="submit" id="search-button">Search</button>
         </div>
         <div id = "recent-history"></div>
     </section>
-    <section id="main">
+    <section id="forecast">
         <div id = "today">
             <div id = "current">
-                <div class = "icon">icon</div>
-                <div class = "temperature">degrees</div>
-                <div class = "wind">wind</div>
-                <div class = "humidity">humidity</div>
+                <div id = "name-display"></div>
+                <img id = "icon-display" src = ""></img>
+                <div id = "temperature-display"></div>
+                <div id = "feels-like-display"></div>
+                <div id = "temp-max-display"></div>
+                <div id = "temp-min-display"></div>
+                <div id = "description-display"></div>
+                <div id = "sunrise-display"></div>
+                <div id = "sunset-display"></div>
+                <div id = "wind-speed-display"></div>
+                <div id = "wind-direction-display"></div>
+                <div id = "humidity-display"></div>
+                <div id = "pressure-display"></div>
             </div>
-            <div id="hourly">
+        <!-- <div id="hourly">
                 <div class = "hour">12:00 AM</div>
                 <div class = "hour">1:00 AM</div>
                 <div class = "hour">2:00 AM</div>
@@ -49,9 +58,9 @@
                 <div class = "hour">9:00 PM</div>
                 <div class = "hour">10:00 PM</div>
                 <div class = "hour">11:00 PM</div>
-            </div>
+            </div> -->
         </div>
-        <div id = "week">
+        <!-- <div id = "week">
             <div class="day">Sunday</div>
             <div class="day">Monday</div>
             <div class="day">Tuesday</div>
@@ -60,7 +69,7 @@
             <div class="day">Friday</div>
             <div class="day">Saturday</div>
 
-        </div>
+        </div> -->
 
     </section>
     <footer></footer>
