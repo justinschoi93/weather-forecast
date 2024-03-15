@@ -12,6 +12,7 @@ const displayWindSpeed = document.getElementById('wind-speed-display');
 const displayWindDirection = document.getElementById('wind-direction-display');
 const displayHumidity = document.getElementById('humidity-display');
 const displayPressure = document.getElementById('pressure-display');
+const recentHistory = document.getElementById('recent-history');
 
 const display = {
 
@@ -83,8 +84,20 @@ function checkWeather (lat, lon) {
             displayWindDirection.innerHTML = data.wind.deg;
             displayHumidity.innerHTML = data.main.humidity;
             displayPressure.innerHTML = data.main.pressure;
-
-            // console.log(displayName.innerHTML);
+            let searchedCitiesList = Array.from(recentHistory.querySelectorAll("li.searched-city"));
+            let searchedCitiesIds = searchedCitiesList.map( city => city.getAttribute("id"));
+            
+            if (!searchedCitiesIds.includes(data.name)) {
+                let searchedCity = document.createElement("li");
+                searchedCity.setAttribute("class", "searched-city");
+                searchedCity.setAttribute("id", data.name);
+                searchedCity.innerHTML = data.name;
+                recentHistory.appendChild(searchedCity)
+            }
+            
+            console.log(searchedCitiesIds);
+            console.log(searchedCity);
+            console.log(displayName.innerHTML);
         })
 
 }
