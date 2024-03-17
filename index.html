@@ -8,11 +8,19 @@
 </head>
 <body>
     <header>
+        <img src = "assets/weather-logo.jpg" placeholder = "logo" id = "weather-logo">
         <h1>Weather Forecast</h1>
+        <select class = "countries-select" id = "country-code">
+        </select>
+        <select id = "measurement-unit">
+            <option class = "measurement-units" value="farenheit" selected = "selected">&deg F</option>
+            <option class = "measurement-units" value="celsius">&deg C</option>
+        </select>
+        <div></div>
     </header>
     <section id="sidebar">
         <div id = "search-bar">
-            <label for="city-search">Search for City</label>
+            <label for="city-search">Search City or Zipcode</label>
             <input type="search" id="city-search" name="city">
             <button type="submit" id="search-button">Search</button>
         </div>
@@ -76,6 +84,6 @@
     </section>
     <footer></footer>
 
+    <script src = "assets/script.js"></script>
 </body>
-<script src = "assets/script.js"></script>
 </html>

@@ -1,3 +1,6 @@
+const COUNTRIES = require('./countryCodes.js');
+document.addEventListener('DOMContentLoaded', function(){
+
 //HTML elements
 const displayName = document.getElementById('name-display');
 const displayIcon = document.getElementById('icon-display');
@@ -13,10 +16,19 @@ const displayWindDirection = document.getElementById('wind-direction-display');
 const displayHumidity = document.getElementById('humidity-display');
 const displayPressure = document.getElementById('pressure-display');
 const recentHistory = document.getElementById('recent-history');
+const measurementUnit = document.getElementById('measurement-unit').value;
+const countrySelect = document.querySelector('countries-select');
 
-const display = {
+COUNTRIES.forEach( country => {
+    const optionCountry = createElement('option');
+    
+    optionCountry.setAttribute("name", country.name);
+    optionCountry.setAttribute("value", country['country-code']);
+    optionCountry.innerHTML = country.name;
+    
+    countrySelect.appendChild(optionCountry); 
+});
 
-}
 // Search Bar including submit button
 var searchBar = document.getElementById("search-button")
                         .addEventListener( 'click', (event) => {
@@ -70,7 +82,8 @@ function checkWeather (lat, lon) {
             }
         })
         .then( data => {
-
+            
+            console.log(data);
             displayName.innerHTML = data.name;
             displayIcon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
             displayTemperature.innerHTML = data.main.temp;
@@ -95,11 +108,11 @@ function checkWeather (lat, lon) {
                 recentHistory.appendChild(searchedCity)
             }
             
-            console.log(searchedCitiesIds);
-            console.log(searchedCity);
-            console.log(displayName.innerHTML);
+            // console.log(searchedCitiesIds);
+            // console.log(searchedCity);
+            // console.log(displayName.innerHTML);
         })
 
 }
 
-
+})

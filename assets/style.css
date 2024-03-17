@@ -1,9 +1,20 @@
 *{
-    background-color: #274fef
+    background: (#ffffff)
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header h1 {}
+
+#weather-logo {
+    width: 75px;
+    height: 75px;
 }
 
 #sidebar {
-    background-color: green;
 }
 .forecast {
     background-color: aqua;
