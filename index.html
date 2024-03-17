@@ -73,16 +73,15 @@
             <option value="Select-a-country" selected disabled hidden>Select a country</option>
         </select>
         <div>
-            <select id = "measurement-units">
-                <option class = "measurement-units" value="farenheit" selected = "selected">&deg F</option>
-                <option class = "measurement-units" value="celsius">&deg C</option>
+            <select id = "unit-select">
+                <option class = "measurement-units" value="imperial" selected = "selected">&deg F</option>
+                <option class = "measurement-units" value="metric">&deg C</option>
             </select>
         </div>
         <div id = "recent-history"></div>
     </section>
     <section id="forecast">
         <div id = "today">
-            <div id = "current">
                 <div id = "name-display"></div>
                 <img id = "icon-display" src = ""></img>
                 <div id = "temperature-display"></div>
@@ -96,7 +95,10 @@
                 <div id = "wind-direction-display"></div>
                 <div id = "humidity-display"></div>
                 <div id = "pressure-display"></div>
-            </div>
+        </div>
+        <div id = "five-day-forecast">
+
+        </div>
     </section>
     <footer></footer>
 
