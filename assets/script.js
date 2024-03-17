@@ -14,7 +14,7 @@ const displayWindSpeed = document.getElementById('wind-speed-display');
 const displayWindDirection = document.getElementById('wind-direction-display');
 const displayHumidity = document.getElementById('humidity-display');
 const displayPressure = document.getElementById('pressure-display');
-const recentHistory = document.getElementById('recent-history');
+const searchHistory = document.getElementById('recent-searches');
 const countrySelect = document.getElementById('country-select');
 const stateSelect = document.getElementById('state-select');
 const unitSelect = document.getElementById('unit-select');
@@ -35,7 +35,7 @@ function getGeocodingAPI (searchBarInput, state, countryCode, unit) {
     if (isValidZipCode(searchBarInput)) { // if input is a zip code
         let zipcode = searchBarInput;
         geocoding_api = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
-    } else if (state) {
+    } else if (!state === 'Select a state (optional)') {
         let city = searchBarInput;
         geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
     } else {
@@ -43,13 +43,15 @@ function getGeocodingAPI (searchBarInput, state, countryCode, unit) {
         geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
     }
     return geocoding_api;
+    // return   `http://api.openweathermap.org/geo/1.0/direct?q=Seoul,${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+
 };
 // Function that finds coordinates of city by either city name or zip code
 function getCoordinates (geocodingAPI) {
 
     console.log(geocodingAPI)
 
-    if (geocodingAPI.includes('zip')) {
+    if (geocodingAPI.includes('zip')) {4
         fetch(geocodingAPI)
             .then( response => {
                 if (!response.ok) {
@@ -101,7 +103,7 @@ function checkWeather (lat, lon, name) {
             
             console.log(data);
             // current weather
-            let currentTemp = data.current.temp;
+            let currentTemp = data.current.temp + '°' + unit;
             let currentTempMax = data.daily[0].temp.max;
             let currentTempMin = data.daily[0].temp.min;
             let currentFeelsLike = data.current.feels_like;
@@ -185,7 +187,7 @@ function checkWeather (lat, lon, name) {
             displayPressure.innerHTML = `Pressure: ${currentPressure}`;
             
             // Add new city to recent history
-            const searchedCitiesList = Array.from(recentHistory.querySelectorAll("li.searched-city"));
+            const searchedCitiesList = Array.from(searchHistory.querySelectorAll("li.searched-city"));
             const searchedCitiesIds = searchedCitiesList.map( city => city.getAttribute("id"));
             
             if (!searchedCitiesIds.includes(name)) {
@@ -193,7 +195,7 @@ function checkWeather (lat, lon, name) {
                 searchedCity.setAttribute("class", "searched-city");
                 searchedCity.setAttribute("id", name);
                 searchedCity.innerHTML = name;
-                recentHistory.appendChild(searchedCity);
+                searchHistory.appendChild(searchedCity);
             };
         })
 }

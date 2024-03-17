@@ -476,7 +476,7 @@ const COUNTRIES = [
         "country-code": "408"
     },
     {
-        "name": "Korea, Republic of",
+        "name": "Korea (Republic of)",
         "country-code": "410"
     },
     {

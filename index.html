@@ -14,10 +14,9 @@
     <section id="sidebar">
         <div id = "search-bar">
             <input type="search" id="city-search" name="location" placeholder="Search by City or Zipcode">
-            <button type="submit" id="search-button">Search</button>
         </div>
         <select id="state-select">
-            <option value="Select-a-state" selected disabled hidden>Select a state</option>
+            <option value="Select-a-state" selected disabled hidden>Select a state (optional)</option>
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
             <option value="Arizona">Arizona</option>
@@ -72,29 +71,34 @@
         <select class = "countries" id = "country-select">
             <option value="Select-a-country" selected disabled hidden>Select a country</option>
         </select>
+        <button type="submit" id="search-button">Search</button>
         <div>
             <select id = "unit-select">
                 <option class = "measurement-units" value="imperial" selected = "selected">&deg F</option>
                 <option class = "measurement-units" value="metric">&deg C</option>
             </select>
         </div>
-        <div id = "recent-history"></div>
+        <div id = "recent-history">
+            <h2>Recent Searches</h2>
+            <ul id = "recent-searches">
+            </ul>
+        </div>
     </section>
     <section id="forecast">
         <div id = "today">
-                <div id = "name-display"></div>
-                <img id = "icon-display" src = ""></img>
-                <div id = "temperature-display"></div>
-                <div id = "feels-like-display"></div>
-                <div id = "temp-max-display"></div>
-                <div id = "temp-min-display"></div>
-                <div id = "description-display"></div>
-                <div id = "sunrise-display"></div>
-                <div id = "sunset-display"></div>
-                <div id = "wind-speed-display"></div>
-                <div id = "wind-direction-display"></div>
-                <div id = "humidity-display"></div>
-                <div id = "pressure-display"></div>
+            <div id = "name-display"></div>
+            <img id = "icon-display" src = ""></img>
+            <div id = "temperature-display"></div>
+            <div id = "feels-like-display"></div>
+            <div id = "temp-max-display"></div>
+            <div id = "temp-min-display"></div>
+            <div id = "description-display"></div>
+            <div id = "sunrise-display"></div>
+            <div id = "sunset-display"></div>
+            <div id = "wind-speed-display"></div>
+            <div id = "wind-direction-display"></div>
+            <div id = "humidity-display"></div>
+            <div id = "pressure-display"></div>
         </div>
         <div id = "five-day-forecast">
 

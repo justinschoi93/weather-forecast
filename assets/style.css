@@ -1,4 +1,4 @@
-*{
+/* *{
     background: (#ffffff)
 }
 
@@ -21,5 +21,129 @@ header h1 {
 .forecast {
     background-color: aqua;
     color: pink;
+} */
+
+/*  */
+/*  */
+/*  */
+/*  */
+
+/*  */
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+/* General Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #007BFF;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+#weather-logo {
+    width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Sidebar Styles */
+#sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 300px;
+    float: left;
+}
+
+#search-bar {
+    margin-bottom: 20px;
+}
+
+#city-search {
+    padding: 10px;
+    width: calc(100% - 22px); /* Adjusts for padding */
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#search-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Forecast Styles */
+#forecast {
+    margin-left: 320px; /* Adjust based on sidebar width */
+    padding: 20px;
+}
+
+#today, #five-day-forecast {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#icon-display {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Footer Styles */
+footer {
+    clear: both;
+    background-color: #007BFF;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
