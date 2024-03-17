@@ -7,7 +7,9 @@ header {
     justify-content: space-between;
 }
 
-header h1 {}
+header h1 {
+    
+}
 
 #weather-logo {
     width: 75px;

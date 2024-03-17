@@ -1,4 +1,4 @@
-const countryCodes = [
+const COUNTRIES = [
     {
         "name": "Afghanistan",
         "country-code": "004"
@@ -997,4 +997,4 @@ const countryCodes = [
     }
 ];
 
-export default countryCodes;
+export { COUNTRIES };
