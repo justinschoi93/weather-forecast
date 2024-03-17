@@ -10,19 +10,73 @@
     <header>
         <img src = "assets/weather-logo.jpg" placeholder = "logo" id = "weather-logo">
         <h1>Weather Forecast</h1>
-        <select class = "countries-select" id = "country-code">
-        </select>
-        <select id = "measurement-unit">
-            <option class = "measurement-units" value="farenheit" selected = "selected">&deg F</option>
-            <option class = "measurement-units" value="celsius">&deg C</option>
-        </select>
-        <div></div>
     </header>
     <section id="sidebar">
         <div id = "search-bar">
-            <label for="city-search">Search City or Zipcode</label>
-            <input type="search" id="city-search" name="city">
+            <input type="search" id="city-search" name="location" placeholder="Search by City or Zipcode">
             <button type="submit" id="search-button">Search</button>
+        </div>
+        <select id="state-select">
+            <option value="Select-a-state" selected disabled hidden>Select a state</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="West Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+        </select>
+        <select class = "countries" id = "country-select">
+            <option value="Select-a-country" selected disabled hidden>Select a country</option>
+        </select>
+        <div>
+            <select id = "measurement-units">
+                <option class = "measurement-units" value="farenheit" selected = "selected">&deg F</option>
+                <option class = "measurement-units" value="celsius">&deg C</option>
+            </select>
         </div>
         <div id = "recent-history"></div>
     </section>
@@ -43,44 +97,6 @@
                 <div id = "humidity-display"></div>
                 <div id = "pressure-display"></div>
             </div>
-        <!-- <div id="hourly">
-                <div class = "hour">12:00 AM</div>
-                <div class = "hour">1:00 AM</div>
-                <div class = "hour">2:00 AM</div>
-                <div class = "hour">3:00 AM</div>
-                <div class = "hour">4:00 AM</div>
-                <div class = "hour">5:00 AM</div>
-                <div class = "hour">6:00 AM</div>
-                <div class = "hour">7:00 AM</div>
-                <div class = "hour">8:00 AM</div>
-                <div class = "hour">9:00 AM</div>
-                <div class = "hour">10:00 AM</div>
-                <div class = "hour">11:00 AM</div>
-                <div class = "hour">12:00 AM</div>
-                <div class = "hour">1:00 PM</div>
-                <div class = "hour">2:00 PM</div>
-                <div class = "hour">3:00 PM</div>
-                <div class = "hour">4:00 PM</div>
-                <div class = "hour">5:00 PM</div>
-                <div class = "hour">6:00 PM</div>
-                <div class = "hour">7:00 PM</div>
-                <div class = "hour">8:00 PM</div>
-                <div class = "hour">9:00 PM</div>
-                <div class = "hour">10:00 PM</div>
-                <div class = "hour">11:00 PM</div>
-            </div> -->
-        </div>
-        <!-- <div id = "week">
-            <div class="day">Sunday</div>
-            <div class="day">Monday</div>
-            <div class="day">Tuesday</div>
-            <div class="day">Wednesday</div>
-            <div class="day">Thursday</div>
-            <div class="day">Friday</div>
-            <div class="day">Saturday</div>
-
-        </div> -->
-
     </section>
     <footer></footer>
 

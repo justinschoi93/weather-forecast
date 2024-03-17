@@ -15,45 +15,43 @@ const displayWindDirection = document.getElementById('wind-direction-display');
 const displayHumidity = document.getElementById('humidity-display');
 const displayPressure = document.getElementById('pressure-display');
 const recentHistory = document.getElementById('recent-history');
-const measurementUnit = document.getElementById('measurement-unit').value;
-const countrySelect = document.querySelector('countries-select');
+const measurementUnit = document.getElementById('measurement-units').value;
+const countrySelect = document.getElementById('country-select');
+const stateSelect = document.getElementById('state-select');
+
 
 COUNTRIES.forEach( country => {
-    const optionCountry = createElement('option');
-    
-    optionCountry.setAttribute("name", country.name);
-    optionCountry.setAttribute("value", country['country-code']);
-    optionCountry.textContent = country.name;
-    
+    const optionCountry = new Option(country.name, country['country-code']);
     countrySelect.appendChild(optionCountry); 
 });
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', async (event) => {
+    event.preventDefault();
     // Search Bar including submit button
     const searchBar = document.getElementById("search-button")
                             .addEventListener( 'click', (event) => {
                                 event.preventDefault();
                                 const searchBarInput = document.getElementById('city-search').value;
-
-                                getCoordinates(searchBarInput);
-
-                                // if searchBarInput is a zipcode, use zipAPI (use regex)
-                                //// if searchBarInput can be converted into a number and is 5 digits long, use zipAPI
-                                // if searchBarInput is a string and cannot be converted into a number, use cityAPI (use regex)
+                                const countryCode = countrySelect.options[countrySelect.selectedIndex].value;
+                                const state = stateSelect.options[stateSelect.selectedIndex].value;
+                                getCoordinates(searchBarInput, state, countryCode);
                             });
 
 
     // Function that finds coordinates of city by either city name or zip code
     function getCoordinates (searchBarInput, state, countryCode) {
-        // var state;
-        let countryCode = countrySelect.value;
-        
+        let geocoding_api = ''
+
         if (typeof searchBarInput === 'number' && searchBarInput.toString().length === 5) {
-            const geocoding_api = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+            let zipcode = searchBarInput;
+            geocoding_api = `http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
         } else if (state) {
-            const geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+            let city = searchBarInput;
+            geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
         } else {
-            const geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+            let city = searchBarInput;
+            geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
         }
+
         fetch(geocoding_api)
             .then( response => {
                 if (!response.ok) {
@@ -63,8 +61,8 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .then( data => {
                 if (data && data.length > 0) {
-                    var lat = data[0].lat;
-                    var lon = data[0].lon;
+                    let lat = data[0].lat;
+                    let lon = data[0].lon;
                     
                     checkWeather(lat, lon);
                 }
@@ -73,8 +71,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function checkWeather (lat, lon) {
         
-        var weather_api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0b2949d3ba17a6aec298126cb969f7dc`;
-        console.log(weather_api);
+        const weather_api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0b2949d3ba17a6aec298126cb969f7dc`;
+        const fivedayforecast_api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+        
         fetch(weather_api)
             .then( response => {
                 if (!response.ok) {
@@ -85,22 +84,37 @@ document.addEventListener('DOMContentLoaded', function(){
             })
             .then( data => {
                 
-                console.log(data);
+                // convert to desired measurement unit
+                if (measurementUnit === 'farenheit') {
+                    data.main.temp = parseFloat((data.main.temp - 273.15) * 9/5 + 32).toFixed(1);
+                    data.main.feels_like = parseFloat((data.main.feels_like - 273.15) * 9/5 + 32).toFixed(1);
+                    data.main.temp_max = parseFloat((data.main.temp_max - 273.15) * 9/5 + 32).toFixed(1);
+                    data.main.temp_min = parseFloat((data.main.temp_min - 273.15) * 9/5 + 32).toFixed(1);
+                } else if (measurementUnit === 'celsius') {
+                    data.main.temp = parseFloat(data.main.temp - 273.15).toFixed(1);
+                    data.main.feels_like = parseFloat(data.main.feels_like - 273.15).toFixed(1);
+                    data.main.temp_max = parseFloat(data.main.temp_max - 273.15).toFixed(1);
+                    data.main.temp_min = parseFloat(data.main.temp_min - 273.15).toFixed(1);
+                }
+
+                // display data
                 displayName.innerHTML = data.name;
                 displayIcon.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
-                displayTemperature.innerHTML = data.main.temp;
-                displayFeelsLike.innerHTML = data.main.feels_like;
-                displayTempMax.innerHTML = data.main.temp_max;
-                displayTempMin.innerHTML = data.main.temp_min;
+                displayTemperature.innerHTML = `Current Temperature: ${data.main.temp}`;
+                displayFeelsLike.innerHTML = `Feels like: ${data.main.feels_like}`;
+                displayTempMax.innerHTML = `High: ${data.main.temp_max}`;
+                displayTempMin.innerHTML = `Low: ${data.main.temp_min}`;
                 displayDescription.innerHTML = data.weather[0].description;
-                displaySunrise.innerHTML = data.sys.sunrise;
-                displaySunset.innerHTML = data.sys.sunset;
-                displayWindSpeed.innerHTML = data.wind.speed;
-                displayWindDirection.innerHTML = data.wind.deg;
-                displayHumidity.innerHTML = data.main.humidity;
-                displayPressure.innerHTML = data.main.pressure;
-                let searchedCitiesList = Array.from(recentHistory.querySelectorAll("li.searched-city"));
-                let searchedCitiesIds = searchedCitiesList.map( city => city.getAttribute("id"));
+                displaySunrise.innerHTML = `Sunrise: ${data.sys.sunrise}`;
+                displaySunset.innerHTML = `Sunset: ${data.sys.sunset}`;
+                displayWindSpeed.innerHTML = `Wind speed: ${data.wind.speed}`;
+                displayWindDirection.innerHTML = `Wind direction: ${data.wind.deg}`;
+                displayHumidity.innerHTML = `Humidity: ${data.main.humidity}`;
+                displayPressure.innerHTML = `Pressure: ${data.main.pressure}`;
+                
+                // Add new city to recent history
+                const searchedCitiesList = Array.from(recentHistory.querySelectorAll("li.searched-city"));
+                const searchedCitiesIds = searchedCitiesList.map( city => city.getAttribute("id"));
                 
                 if (!searchedCitiesIds.includes(data.name)) {
                     let searchedCity = document.createElement("li");
@@ -114,6 +128,12 @@ document.addEventListener('DOMContentLoaded', function(){
                 // console.log(searchedCity);
                 // console.log(displayName.innerHTML);
             })
+
+        fetch(fivedayforecast_api)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
 
     }
 
