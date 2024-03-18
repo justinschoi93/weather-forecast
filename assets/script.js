@@ -1,4 +1,5 @@
 import { COUNTRIES } from './countryCodes.js';
+// import moment from 'moment-timezone';
 
 //HTML elements
 const displayName = document.getElementById('name-display');
@@ -10,6 +11,7 @@ const displayTempMin = document.getElementById('temp-min-display');
 const displayDescription = document.getElementById('description-display');
 const displaySunrise = document.getElementById('sunrise-display');
 const displaySunset = document.getElementById('sunset-display');
+const displayClouds = document.getElementById('clouds-display');
 const displayWindSpeed = document.getElementById('wind-speed-display');
 const displayWindDirection = document.getElementById('wind-direction-display');
 const displayHumidity = document.getElementById('humidity-display');
@@ -43,7 +45,8 @@ function getGeocodingAPI (searchBarInput, state, countryCode, unit) {
         geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
     }
     return geocoding_api;
-    // return   `http://api.openweathermap.org/geo/1.0/direct?q=Seoul,${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
+    // return   `http://api.openweathermap.org/geo/1.0/direct?q=Seoul,410&appid=0b2949d3ba17a6aec298126cb969f7dc`;
+    // return `http://api.openweathermap.org/geo/1.0/zip?zip=94117&appid=0b2949d3ba17a6aec298126cb969f7dc`
 
 };
 // Function that finds coordinates of city by either city name or zip code
@@ -80,7 +83,6 @@ function getCoordinates (geocodingAPI) {
                     let lat = data[0].lat;
                     let lon = data[0].lon;
                     let name = data[0].name;
-                    console.log(name)
                     checkWeather(lat, lon, name);
                 }
             })
@@ -89,6 +91,7 @@ function getCoordinates (geocodingAPI) {
 // Function that checks the weather using coordinates
 function checkWeather (lat, lon, name) {
     const unit = unitSelect.options[unitSelect.selectedIndex].value;
+    const unitDisplay = unitSelect.options[unitSelect.selectedIndex].text;
     const weather_api = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${unit}&appid=0b2949d3ba17a6aec298126cb969f7dc`;
     
     fetch(weather_api)
@@ -103,7 +106,7 @@ function checkWeather (lat, lon, name) {
             
             console.log(data);
             // current weather
-            let currentTemp = data.current.temp + '°' + unit;
+            let currentTemp = data.current.temp;
             let currentTempMax = data.daily[0].temp.max;
             let currentTempMin = data.daily[0].temp.min;
             let currentFeelsLike = data.current.feels_like;
@@ -113,8 +116,8 @@ function checkWeather (lat, lon, name) {
             let currentClouds = data.current.clouds;
             let currentVisibility = data.current.visibility;
             let currentPressure = data.current.pressure;
-            let currentSunrise = data.current.sunrise;
-            let currentSunset = data.current.sunset;
+            // let currentSunrise = unixConverter(data.current.sunrise);
+            // let currentSunset = unixConverter(data.current.sunset);
             let currentDescription = data.current.weather[0].description;
             let currentIcon = data.current.weather[0].icon;
 
@@ -132,8 +135,8 @@ function checkWeather (lat, lon, name) {
                     moonrise: day.moonrise,
                     moonset: day.moonset,
                     summary: day.summary,
-                    sunrise: day.sunrise,
-                    sunset: day.sunset,
+                    // sunrise: unixConverter(day.sunrise),
+                    // sunset: unixConverter(day.sunset),
                     dayTemp: day.temp.day,
                     nightTemp: day.temp.night,
                     eveTemp: day.temp.eve,  
@@ -154,13 +157,17 @@ function checkWeather (lat, lon, name) {
                 if (index === 6) {forecast.day = '6 days from now'};
                 if (index === 7) {forecast.day = '7 days from now'}
                 
-
+                // forecast.day.setAttribute("class", "forecast-day");
+                
                 let weatherCard = document.createElement("div");
                 weatherCard.setAttribute("id", `day-${index}`);
                 
                 Object.entries(forecast).forEach( ([key, value]) => {
                     let entry = document.createElement("div");
+
                     entry.setAttribute("id", `day-${index}-${key}`);
+                    if (key === "day") {entry.setAttribute("class", "forecast-day")};
+                    if (typeof value === "number") {value = parseFloat(value.toFixed(1)).toString() + " " + unitDisplay};
                     entry.innerHTML = value;    
                     weatherCard.appendChild(entry);
                 })
@@ -171,17 +178,17 @@ function checkWeather (lat, lon, name) {
                 fiveDayForecast.appendChild(weatherCard);
             })
 
-            // display data
+            // Display current weather
             displayName.innerHTML = name;
             displayIcon.setAttribute('src', `https://openweathermap.org/img/wn/${currentIcon}@2x.png`);
-            displayTemperature.innerHTML = `Current Temperature: ${currentTemp}`;
-            displayFeelsLike.innerHTML = `Feels like: ${currentFeelsLike}`;
-            displayTempMax.innerHTML = `High: ${currentTempMax}`;
-            displayTempMin.innerHTML = `Low: ${currentTempMin}`;
-            displayDescription.innerHTML = currentDescription;
+            displayTemperature.innerHTML = `Current Temperature: ${parseFloat(currentTemp.toFixed(1))} ${unitDisplay}`;
+            displayFeelsLike.innerHTML = `Feels like: ${parseFloat(currentFeelsLike.toFixed(1))} ${unitDisplay}`;
+            displayTempMax.innerHTML = `High: ${parseFloat(currentTempMax.toFixed(1))} ${unitDisplay}`;
+            displayTempMin.innerHTML = `Low: ${parseFloat(currentTempMin.toFixed(1))} ${unitDisplay}`;
+            displayDescription.innerHTML = `Clouds: ${currentDescription}`;
             displaySunrise.innerHTML = `Sunrise: ${currentSunrise}`;
             displaySunset.innerHTML = `Sunset: ${currentSunset}`;
-            displayWindSpeed.innerHTML = `Wind speed: ${currentWindSpeed}`;
+            displayWindSpeed.innerHTML = `Wind speed: ${parseFloat(currentWindSpeed.toFixed(1))} ${unitDisplay}`;
             displayWindDirection.innerHTML = `Wind direction: ${currentWindDirection}`;
             displayHumidity.innerHTML = `Humidity: ${currentHumidity}`;
             displayPressure.innerHTML = `Pressure: ${currentPressure}`;
@@ -199,6 +206,16 @@ function checkWeather (lat, lon, name) {
             };
         })
 }
+// This function converts unix time to PST
+// function unixConverter (unix) {
+//     if (typeof moment === "undefined" || typeof moment.tz === "undefined") {
+//         console.error("moment-timezone is required for this function to work.");
+//         return;
+//     }
+
+//     const PST = moment.unix(unix).tz("America/Los_Angeles").format("HH:mm:ss a");
+//     return PST;
+// }
 
 // Search Bar including submit button
 const searchBar = document.getElementById("search-button");

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/justinschoi93/weather-forecast/issues"
   },
-  "homepage": "https://github.com/justinschoi93/weather-forecast#readme"
+  "homepage": "https://github.com/justinschoi93/weather-forecast#readme",
+  "dependencies": {
+    "moment-timezone": "^0.5.45"
+  }
 }
