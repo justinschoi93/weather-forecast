@@ -14,10 +14,10 @@
     <div class = "content">
         <section id="sidebar">
             <div id = "search-bar">
-                <input type="search" id="city-search" name="location" placeholder="Search by City or Zipcode">
+                <input type="search" id="city-search" name="location" placeholder="City or Zip">
             </div>
             <select id="state-select">
-                <option value="Select-a-state" selected disabled hidden>Select a state (optional)</option>
+                <option value="Select-a-state" selected disabled hidden>State (optional)</option>
                 <option value="Alabama">Alabama</option>
                 <option value="Alaska">Alaska</option>
                 <option value="Arizona">Arizona</option>
@@ -70,25 +70,25 @@
                 <option value="Wyoming">Wyoming</option>
             </select>
             <select class = "countries" id = "country-select">
-                <option value="Select-a-country" selected disabled hidden>Select a country</option>
+                <option value="Select-a-country" selected disabled hidden>Country</option>
             </select>
-            <button type="submit" id="search-button">Search</button>
             <div>
                 <select id = "unit-select">
                     <option class = "measurement-units" value="metric" selected>&degC</option>
                     <option class = "measurement-units" value="imperial">&degF</option>
                 </select>
             </div>
+            <button type="submit" id="search-button">Search</button>
             <div id = "recent-history">
                 <h2>Recent Searches</h2>
                 <ul id = "recent-searches">
                 </ul>
             </div>
         </section>
-        <section id="forecast">
-            <div id = "today">
-                <h2>Current Conditions</h2>
+        <section id="forecast" class="hidden">
+            <div id = "today" class="weather-card">
                 <div id = "name-display"></div>
+                <h4>Current Conditions</h4>
                 <img id = "icon-display" src = ""></img>
                 <div id = "temperature-display"></div>
                 <div id = "feels-like-display"></div>
@@ -109,7 +109,6 @@
         </section>
     </div>
         <footer></footer>
-        
-        <script src = "assets/script.js" type="module"></script>
+        <script src = "./assets/script.js" type="module"></script>
     </body>
     </html>

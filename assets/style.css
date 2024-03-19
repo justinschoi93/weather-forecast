@@ -3,19 +3,23 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    background: linear-gradient(135deg, #007bff, #12efff);
+    
 }
 
 .content {
     display: flex;
     flex-grow: 1;
-    min-height: 100vh;
-
+    margin: 10px;
+    border-radius: 20px;
+    padding: 20px 35px;
+    text-align: center;
 }
+
 img {
     max-width: 100%;
     height: auto;
@@ -23,40 +27,41 @@ img {
 
 /* Header Styles */
 header {
-    background: #007bff;
-    color: #fbe706;
+    background-color: lightskyblue;
+    color: #fff;
     padding: 20px 0;
     text-align: center;
+    border-radius: 15px;
+    
 }
 
 /* Sidebar Styles */
 #sidebar {
-    background: #333;
+    background: #222;
     color: #ffffff;
     padding: 20px;
-    width: 100px;
-}
-
-#sidebar, #forecast {
-    flex: 1;
+    width: 30%;
+    
+    border-radius: 20px;
 }
 
 #sidebar h2 {
-    margin: 20px 0;
+    margin: 10px;
 }
 
 input[type=search], select, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid #ddd;
 }
 
 button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: rgb(251, 251, 114);
+    color: black;
     cursor: pointer;
+    width: 75%;
 }
 
 button:hover {
@@ -66,15 +71,21 @@ button:hover {
 /* Main Content Styles */
 #forecast {
     flex-grow: 1;
-    padding: 20px;
+    padding-left: 10px;
+    top: 0;
 }
 
-#today, #five-day-forecast {
+.weather-card {
     background: #fff;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+#today {
+    flex-grow: 1;
 }
 
 #today div, #five-day-forecast div {
@@ -98,12 +109,10 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     #sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
+        
     }
 
     #forecast {
-        margin-left: 0;
+        
     }
 }

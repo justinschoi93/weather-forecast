@@ -1,5 +1,4 @@
 import { COUNTRIES } from './countryCodes.js';
-// import moment from 'moment-timezone';
 
 //HTML elements
 const displayName = document.getElementById('name-display');
@@ -21,6 +20,7 @@ const countrySelect = document.getElementById('country-select');
 const stateSelect = document.getElementById('state-select');
 const unitSelect = document.getElementById('unit-select');
 const fiveDayForecast = document.getElementById('five-day-forecast');
+const forecastDisplay = document.getElementById('forecast')
 
 COUNTRIES.forEach( country => {
     const optionCountry = new Option(country.name, country['country-code']);
@@ -90,6 +90,7 @@ function getCoordinates (geocodingAPI) {
 }
 // Function that checks the weather using coordinates
 function checkWeather (lat, lon, name) {
+    forecastDisplay.classList.remove("hidden");
     const unit = unitSelect.options[unitSelect.selectedIndex].value;
     const unitDisplay = unitSelect.options[unitSelect.selectedIndex].text;
     const weather_api = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=${unit}&appid=0b2949d3ba17a6aec298126cb969f7dc`;
@@ -126,10 +127,7 @@ function checkWeather (lat, lon, name) {
 
                 const forecast = {
                     day: index,
-                    dayFeelsLike: day.feels_like.day,
-                    nightFeelsLIke: day.feels_like.night,
-                    eveFeelsLike: day.feels_like.eve,
-                    mornFeelsLike: day.feels_like.morn,
+                    icon: day.weather[0].icon,
                     humidity: day.humidity,
                     moonPhase: day.moon_phase,
                     moonrise: day.moonrise,
@@ -161,21 +159,29 @@ function checkWeather (lat, lon, name) {
                 
                 let weatherCard = document.createElement("div");
                 weatherCard.setAttribute("id", `day-${index}`);
-                
-                Object.entries(forecast).forEach( ([key, value]) => {
-                    let entry = document.createElement("div");
+                weatherCard.className = "weather-card"
 
-                    entry.setAttribute("id", `day-${index}-${key}`);
-                    if (key === "day") {entry.setAttribute("class", "forecast-day")};
-                    if (typeof value === "number") {value = parseFloat(value.toFixed(1)).toString() + " " + unitDisplay};
-                    entry.innerHTML = value;    
+                let weatherIcon = document.createElement("img");
+                weatherCard.appendChild(weatherIcon);
+                fiveDayForecast.appendChild(weatherCard);
+
+                Object.entries(forecast).forEach( ([key, value]) => {
+                    let entry 
+                    if (key === "icon") {
+                        entry = document.createElement("img");
+                        entry.setAttribute("id", `day-${index}-${key}`)
+                        entry.setAttribute("src", "http://openweathermap.org/img/wn/" + value + ".png")
+                    } else {
+                        entry = document.createElement("div");
+                        entry.setAttribute("id", `day-${index}-${key}`);
+                        if (key === "day") {entry.setAttribute("class", "forecast-day")};
+                        if (typeof value === "number") {value = parseFloat(value.toFixed(1)).toString() + " " + unitDisplay};
+                        entry.innerHTML = key + ": " + value;    
+                    }
                     weatherCard.appendChild(entry);
                 })
 
-                let weatherIcon = document.createElement("img");
-                weatherIcon.src = "http://openweathermap.org/img/wn/" + day.weather[0].icon + ".png";
-                weatherCard.appendChild(weatherIcon);
-                fiveDayForecast.appendChild(weatherCard);
+               
             })
 
             // Display current weather
@@ -186,8 +192,8 @@ function checkWeather (lat, lon, name) {
             displayTempMax.innerHTML = `High: ${parseFloat(currentTempMax.toFixed(1))} ${unitDisplay}`;
             displayTempMin.innerHTML = `Low: ${parseFloat(currentTempMin.toFixed(1))} ${unitDisplay}`;
             displayDescription.innerHTML = `Clouds: ${currentDescription}`;
-            displaySunrise.innerHTML = `Sunrise: ${currentSunrise}`;
-            displaySunset.innerHTML = `Sunset: ${currentSunset}`;
+            // displaySunrise.innerHTML = `Sunrise: ${currentSunrise}`;
+            // displaySunset.innerHTML = `Sunset: ${currentSunset}`;
             displayWindSpeed.innerHTML = `Wind speed: ${parseFloat(currentWindSpeed.toFixed(1))} ${unitDisplay}`;
             displayWindDirection.innerHTML = `Wind direction: ${currentWindDirection}`;
             displayHumidity.innerHTML = `Humidity: ${currentHumidity}`;
