@@ -1,6 +1,6 @@
-import isValidZip from "./isValidZip";
+import isValidZip from "./isValidZip.js";
 
-export default function getGeocodingAPI (searchBarInput, state, countryCode, unit) {
+export default async function getGeocodingAPI (searchBarInput, state, countryCode) {
     let geocoding_api = '';
 
     if (isValidZip(searchBarInput)) { // if input is a zip code

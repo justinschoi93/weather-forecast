@@ -1,7 +1,4 @@
-export default function getCoordinates (geocodingAPI) {
-
-    console.log(geocodingAPI)
-
+export default async function getCoordinates (geocodingAPI) {
     if (geocodingAPI.includes('zip')) {4
         fetch(geocodingAPI)
             .then( response => {
@@ -28,10 +25,11 @@ export default function getCoordinates (geocodingAPI) {
             })
             .then( data => {
                 if (data && data.length > 0) {
-                    let lat = data[0].lat;
-                    let lon = data[0].lon;
-                    let name = data[0].name;
-                    checkWeather(lat, lon, name);
+                    const result = {};
+                        result.lat = data[0].lat;
+                        result.lon = data[0].lon;
+                        console.log(result);
+                    return result;
                 }
             })
     }
