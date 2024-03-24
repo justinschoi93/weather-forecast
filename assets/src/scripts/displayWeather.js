@@ -1,20 +1,55 @@
 export default async function displayWeather (data) {
-    console.log(data);
-    // let currentTemp = data.current.temp;
-    // let currentTempMax = data.daily[0].temp.max;
-    // let currentTempMin = data.daily[0].temp.min;
-    // let currentFeelsLike = data.current.feels_like;
-    // let currentHumidity = data.current.humidity;
-    // let currentWindDirection = data.current.wind_deg;
-    // let currentWindSpeed = data.current.wind_speed;
-    // let currentClouds = data.current.clouds;
-    // let currentVisibility = data.current.visibility;
-    // let currentPressure = data.current.pressure;
-    // let currentSunrise = unixConverter(data.current.sunrise);
-    // let currentSunset = unixConverter(data.current.sunset);
-    // let currentDescription = data.current.weather[0].description;
-    // let currentIcon = data.current.weather[0].icon;
+    const weather = {};
     
+    ///////////////////////////////////  Data
+    ////// Hourly, starting with current
+    weather.current = {
+        icon: data.current.weather[0].icon,
+        description: data.current.weather[0].description,
+        temperature: data.current.temp,
+        feelsLike: data.current.feels_like,
+        humidity: data.current.humidity,
+        pressure: data.current.pressure,
+        windSpeed: data.current.wind_speed,
+        windDirection: data.current.wind_deg,
+        sunrise: data.current.sunrise,
+        sunset: data.current.sunset,
+    };
+    
+    /////// Daily, starting with tomorrow
+    const day = {
+        0: 'Today',
+        1: 'Tomorrow',
+        2: 'Day after tomorrow',
+        3: 'Day after the day after tomorrow',
+        4: '4 days from now',
+        5: '5 days from now',
+        6: '6 days from now',
+        7: '7 days from now'
+    }
+ 
+    data.daily.forEach( (day, index) => {
+        weather.daily[index] = {
+            day: day[index],
+            icon: weather[0].icon,
+            description:weather[0].description,
+            tempMorn: temp.morn,
+            tempMin: temp.min,
+            tempDay: temp.day,
+            tempMax: temp.max,
+            tempEve: temp.eve,
+            tempNight: temp.night,
+            feelsLike: feels_like.day,
+            humidity: humidity,
+            pressure: pressure,
+            windSpeed: wind_speed,
+            windDirection: wind_deg,
+            sunrise: sunrise,
+            sunset: sunset,
+        }
+    })
+    
+
 }
 
 

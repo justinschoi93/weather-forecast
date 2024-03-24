@@ -42,4 +42,42 @@ The purpose of this project was to practice requesting, reformatting and parsing
 
 * [LinkedIn](https://linkedin.com/in/justinchoica)
 * [Github](https://github.com/justinschoi93)
-```
+
+
+# 
+
+<!-- "current": {
+        "dt": 1711319747,
+        "sunrise": 1711315687,
+        "sunset": 1711360072,
+        "temp": 285.66,
+        "feels_like": 284.12,
+        "pressure": 1016,
+        "humidity": 44,
+        "dew_point": 273.75,
+        "uvi": 0.32,
+        "clouds": 0,
+        "visibility": 10000,
+        "wind_speed": 3.6,
+        "wind_deg": 100,
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01d"
+            }
+        ] -->
+
+
+<!------------------------------------------------ Hourly -->
+<!------------------------------- Today -->
+<!------------------------------- Tomorrow -->
+<!------------------------------- The day after tomorrow -->
+<!------------------------------- The day after the day after tomorrow  -->
+<!------------------------------- 4 days from today -->
+<!------------------------------- 5 days from today -->
+<!------------------------------- 6 days from today -->
+<!------------------------------- 7 daus from today -->
+
+

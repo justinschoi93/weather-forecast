@@ -1,10 +1,8 @@
 export default async function unsplash(string) {
-
     const response = fetch (`https://api.unsplash.com/`);
     const data = (await response).json()
     
     return data
-
 }
 
 

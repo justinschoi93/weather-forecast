@@ -29,8 +29,6 @@ const searchBarHandler = async (e) => {
 }
 searchBar.addEventListener( 'click', searchBarHandler);
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     COUNTRIES.forEach( country => {
         // console.log(country);
