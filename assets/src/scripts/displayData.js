@@ -2,11 +2,10 @@ export default async function displayData (data, unit) {
     if (!data) {
         throw new Error('Could not read data.');
     } else {
+        // Sets background image to HD photo from Unsplash
         document.getElementById('main').style.backgroundImage = `url(${data.imgUrl})`;
-        console.log(document.getElementById('main'))
 
-        // console.log(data);
-
+        // Grabs display elements
         const currentName = document.getElementById('current-name');
         const currentIcon = document.getElementById('current-icon');
         const currentDescription = document.getElementById('current-description');
@@ -19,7 +18,7 @@ export default async function displayData (data, unit) {
         const currentSunrise = document.getElementById('current-sunrise');
         const currentSunset = document.getElementById('current-sunset');
 
-        
+        // Displays current weather data
         currentName.innerHTML = 'Location: ' + data.current.name;
         currentIcon.src = `https://openweathermap.org/img/wn/${data.current.icon}@2x.png`; 
         currentDescription.innerHTML = 'Description: ' + data.current.description;
@@ -29,10 +28,8 @@ export default async function displayData (data, unit) {
         currentPressure.innerHTML = 'Pressure: ' + data.current.pressure + 'hPa';
         currentWindSpeed.innerHTML = 'Wind Speed: ' + data.current.windSpeed + 'm/s';
         currentWindDirection.innerHTML = 'Wind Direction: ' + data.current.windDirection + '°';
-        currentSunrise.innerHTML = 'Sunrise: ' + data.current.sunrise;
-        // console.log(data.current.sunrise)
-        currentSunset.innerHTML = 'Sunrise: ' + data.current.sunset;
-        // console.log(data.current.sunset);
+        // currentSunrise.innerHTML = 'Sunrise: ' + data.current.sunrise;
+        // currentSunset.innerHTML = 'Sunrise: ' + data.current.sunset;
         
         // console.log(data.daily);
         Object.values(data.daily).forEach((value, index) => {
@@ -53,13 +50,11 @@ export default async function displayData (data, unit) {
             const pressureDisplay = document.getElementById(`day-${day}-pressure`);
             const windSpeedDisplay = document.getElementById(`day-${day}-wind-speed`);
             const windDirectionDisplay = document.getElementById(`day-${day}-wind-direction`);
-            const sunriseDisplay = document.getElementById(`day-${day}-sunrise`);
-            const sunsetDisplay = document.getElementById(`day-${day}-sunset`);
+            // const sunriseDisplay = document.getElementById(`day-${day}-sunrise`);
+            // const sunsetDisplay = document.getElementById(`day-${day}-sunset`);
             
             dayDisplay.innerHTML = value.day;
-            // console.log(value.icon);
             iconDisplay.setAttribute('src', `https://openweathermap.org/img/wn/${value.icon}.png`);
-            // console.log(iconDisplay)
             summaryDisplay.innerHTML = value.summary;
             tempMorningDisplay.innerHTML = 'Morning: ' + value.tempMorn + unit;
             tempMinDisplay.innerHTML = 'Min: ' + value.tempMin + unit;

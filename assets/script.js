@@ -29,7 +29,7 @@ const searchBarHandler = async (e) => {
     // Collect & display data
     const geocodingAPI = await getGeocodingAPI(searchBarInput, state, countryCode)
     const coordinates = await getCoordinates(geocodingAPI);
-    const data = await checkWeather(coordinates);
+    const data = await checkWeather(coordinates, systemOfMeasurement);
     const weatherData = await parseData(data);
     const imgUrl = await unsplash(weatherData.current.description); // can I do this?
     weatherData.imgUrl = imgUrl;

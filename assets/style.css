@@ -6,6 +6,22 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+/* Header Styles */
+header {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    
+}
+
+#main {
+    display: flex;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     background: linear-gradient(135deg, #007bff, #12efff);
     
@@ -25,28 +41,28 @@ img {
     height: auto;
 }
 
-/* Header Styles */
-header {
-    background-color: lightskyblue;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    border-radius: 15px;
-    
-}
 
 /* Sidebar Styles */
 #sidebar {
+    flex: 0 0 20%;
     background: #222;
     color: #ffffff;
     padding: 20px;
-    width: 30%;
-    
-    border-radius: 20px;
+    margin: 0;
+    width: 20%;
+    position: relative;
+    left: 0;
 }
 
 #sidebar h2 {
     margin: 10px;
+}
+
+#forecast {
+    flex: 1;
+    /* margin-right: 10px;
+    margin-top: 10px; */
+    margin: 20px 10px 10px 0;
 }
 
 input[type=search], select, button {
@@ -77,10 +93,9 @@ button:hover {
 } */
 
 .weather-card {
-    background: #fff;
+    background: rgba(255, 255, 255, .5);
     padding: 20px;
     margin: 0 20px 20px 20px;
-    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: left;
 }
