@@ -17,19 +17,27 @@ const searchBar = document.getElementById("search-button");
 const searchBarHandler = async (e) => {
     e.preventDefault();
 
+    // Get the values from the user and form
     const searchBarInput = document.getElementById('city-search').value;
     const countryCode = countrySelect.options[countrySelect.selectedIndex].value;
     const state = stateSelect.options[stateSelect.selectedIndex].value;
     const systemOfMeasurement = document.getElementById('unit-select').value;
     const unit = systemOfMeasurement === 'imperial' ? '°F' : '°C';
+
+    // Collect & display data
     const geocodingAPI = await getGeocodingAPI(searchBarInput, state, countryCode)
-    // console.log(geocodingAPI);
     const coordinates = await getCoordinates(geocodingAPI);
-    // console.log('coordinates: ', coordinates);
     const data = await checkWeather(coordinates);
-    // console.log('data: ', data);
     const weatherData = await parseData(data);
     displayData(weatherData, unit);
+    const weatherCards = document.querySelectorAll('.weather-card');
+    weatherCards.forEach( card => {
+        card.classList.remove('hidden');
+    });
+
+    
+
+
 }
 searchBar.addEventListener( 'click', searchBarHandler);
 

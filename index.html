@@ -35,10 +35,11 @@
                 </ul>
             </div>
         </section>
-        <section id= "forecast" class="hidden">
-            <div id = "current-forecast" class="current weather-card">
-                <div class="hourly current today name" id="current-name"></div>
+        <section id= "forecast" class="forecast-container">
+            <div id = "current-forecast" class="current weather-card hidden">
+                <h4>Current Weather</h4>
                 <img class="hourly current today icon" id="current-icon"></img>
+                <div class="hourly current today name bold" id="current-name"></div>
                 <div class="hourly current today description" id="current-description"></div>
                 <div class="hourly current today temperature" id="current-temperature"></div>
                 <div class="hourly current today feels-like" id="current-feels-like"></div>
@@ -50,8 +51,8 @@
                 <div class="today sunset" id="current-sunset"></div>
             </div>
             <div id = "five-day-forecast">
-                <div class="daily day-1 day-1-container" id="day-1-contaner">
-                    <div class="daily-day-1" id="day-1-day"></div>
+                <div class="weather-card day-1 day-1-container hidden" id="day-1-contaner">
+                    <h4 class="daily-day-1 " id="day-1-day"></h4> 
                     <img class="daily-day-1" id="day-1-icon"></img>
                     <div class="daily-day-1" id="day-1-summary"></div>
                     <div class="daily-day-1" id="day-1-temp-morning"></div>
@@ -68,9 +69,9 @@
                     <div class="daily-day-1" id="day-1-sunrise"></div>
                     <div class="daily-day-1" id="day-1-sunset"></div>
                 </div>
-                <div class="daily day-2 day-2-container" id="day-2-contaner">
-                    <div class="daily-day-2" id="day-2-day"></div>
-                    <div class="daily-day-2" id="day-2-icon"></div>
+                <div class="weather-card day-2 day-2-container hidden" id="day-2-contaner">
+                    <h4 class="daily-day-2" id="day-2-day"></h4>
+                    <img class="daily-day-2" id="day-2-icon"></img>
                     <div class="daily-day-2" id="day-2-summary"></div>
                     <div class="daily-day-2" id="day-2-temp-morning"></div>
                     <div class="daily-day-2" id="day-2-temp-min"></div>
@@ -86,9 +87,9 @@
                     <div class="daily-day-2" id="day-2-sunrise"></div>
                     <div class="daily-day-2" id="day-2-sunset"></div>
                 </div>
-                <div class="daily day-3 day-3-container" id="day-3-contaner">
-                    <div class="daily-day-3" id="day-3-day"></div>
-                    <div class="daily-day-3" id="day-3-icon"></div>
+                <div class="weather-card day-3 day-3-container hidden" id="day-3-contaner">
+                    <h4 class="daily-day-3" id="day-3-day"></h4>
+                    <img class="daily-day-3" id="day-3-icon"></img>
                     <div class="daily-day-3" id="day-3-summary"></div>
                     <div class="daily-day-3" id="day-3-temp-morning"></div>
                     <div class="daily-day-3" id="day-3-temp-min"></div>
@@ -104,9 +105,9 @@
                     <div class="daily-day-3" id="day-3-sunrise"></div>
                     <div class="daily-day-3" id="day-3-sunset"></div>
                 </div>
-                <div class="daily day-4 day-4-container" id="day-4-contaner">
-                    <div class="daily-day-4" id="day-4-day"></div>
-                    <div class="daily-day-4" id="day-4-icon"></div>
+                <div class="weather-card day-4 day-4-container hidden" id="day-4-contaner">
+                    <h4 class="daily-day-4" id="day-4-day"></h4>
+                    <img class="daily-day-4" id="day-4-icon"></img>
                     <div class="daily-day-4" id="day-4-summary"></div>
                     <div class="daily-day-4" id="day-4-temp-morning"></div>
                     <div class="daily-day-4" id="day-4-temp-min"></div>
@@ -122,9 +123,9 @@
                     <div class="daily-day-4" id="day-4-sunrise"></div>
                     <div class="daily-day-4" id="day-4-sunset"></div>
                 </div>
-                <div class="daily day-5 day-5-container" id="day-5-contaner">
-                    <div class="daily-day-5" id="day-5-day"></div>
-                    <div class="daily-day-5" id="day-5-icon"></div>
+                <div class="weather-card day-5 day-5-container hidden" id="day-5-contaner">
+                    <h4 class="daily-day-5" id="day-5-day"></h4>
+                    <img class="daily-day-5" id="day-5-icon"></img>
                     <div class="daily-day-5" id="day-5-summary"></div>
                     <div class="daily-day-5" id="day-5-temp-morning"></div>
                     <div class="daily-day-5" id="day-5-temp-min"></div>
@@ -140,9 +141,9 @@
                     <div class="daily-day-5" id="day-5-sunrise"></div>
                     <div class="daily-day-5" id="day-5-sunset"></div>
                 </div>
-                <div class="daily day-6 day-6-container" id="day-6-contaner">
-                    <div class="daily-day-6" id="day-6-day"></div>
-                    <div class="daily-day-6" id="day-6-icon"></div>
+                <div class="weather-card day-6 day-6-container hidden" id="day-6-contaner">
+                    <h4 class="daily-day-6" id="day-6-day"></h4>
+                    <img class="daily-day-6" id="day-6-icon"></img>
                     <div class="daily-day-6" id="day-6-summary"></div>
                     <div class="daily-day-6" id="day-6-temp-morning"></div>
                     <div class="daily-day-6" id="day-6-temp-min"></div>
@@ -158,9 +159,9 @@
                     <div class="daily-day-6" id="day-6-sunrise"></div>
                     <div class="daily-day-6" id="day-6-sunset"></div>
                 </div>
-                <div class="daily day-7 day-7-container" id="day-7-contaner">
-                    <div class="daily-day-7" id="day-7-day"></div>
-                    <div class="daily-day-7" id="day-7-icon"></div>
+                <div class="weather-card day-7 day-7-container hidden" id="day-7-contaner">
+                    <h4 class="daily-day-7" id="day-7-day"></h4>
+                    <img class="daily-day-7" id="day-7-icon"></img>
                     <div class="daily-day-7" id="day-7-summary"></div>
                     <div class="daily-day-7" id="day-7-temp-morning"></div>
                     <div class="daily-day-7" id="day-7-temp-min"></div>
@@ -176,9 +177,9 @@
                     <div class="daily-day-7" id="day-7-sunrise"></div>
                     <div class="daily-day-7" id="day-7-sunset"></div>
                 </div>
-                <div class="daily day-8 day-8-container" id="day-8-contaner">
-                    <div class="daily-day-8" id="day-8-day"></div>
-                    <div class="daily-day-8" id="day-8-icon"></div>
+                <div class="weather-card day-8 day-8-container hidden" id="day-8-contaner">
+                    <h4 class="daily-day-8" id="day-8-day"></h4>
+                    <img class="daily-day-8" id="day-8-icon"></img>
                     <div class="daily-day-8" id="day-8-summary"></div>
                     <div class="daily-day-8" id="day-8-temp-morning"></div>
                     <div class="daily-day-8" id="day-8-temp-min"></div>

@@ -28,7 +28,7 @@ export default async function parseData (data) {
         4: '4 days from now',
         5: '5 days from now',
         6: '6 days from now',
-        7: '7 days from now'
+        7: 'A week from now'
     };
     // console.log(data.daily);
     

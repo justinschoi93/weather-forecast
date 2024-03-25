@@ -69,19 +69,24 @@ button:hover {
 }
 
 /* Main Content Styles */
-#forecast {
+/* .current-forecast {
     flex-grow: 1;
     padding-left: 10px;
     top: 0;
-}
+    background-color: none;
+} */
 
 .weather-card {
     background: #fff;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 0 20px 20px 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: left;
+}
+
+.hidden {
+    display: none;
 }
 
 #today {

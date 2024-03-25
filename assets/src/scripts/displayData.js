@@ -40,7 +40,6 @@ export default async function displayData (data, unit) {
             const summaryDisplay = document.getElementById(`day-${day}-summary`);
             const tempMorningDisplay = document.getElementById(`day-${day}-temp-morning`);
             const tempMinDisplay = document.getElementById(`day-${day}-temp-min`);
-            console.log(`day-${day}-temp-day`); // check the resulting ID string
             // const tempDayDisplay = document.getElementById(`day-1-temp-day`);
             const tempDayDisplay = document.getElementById(`day-${day}-temp-day`);
             const tempMaxDisplay = document.getElementById(`day-${day}-temp-max`);
@@ -55,14 +54,13 @@ export default async function displayData (data, unit) {
             const sunsetDisplay = document.getElementById(`day-${day}-sunset`);
             
             dayDisplay.innerHTML = value.day;
-            iconDisplay.src = `https://openweathermap.org/img/wn/${value.icon}.png`;
+            console.log(value.icon);
+            iconDisplay.setAttribute('src', `https://openweathermap.org/img/wn/${value.icon}.png`);
+            console.log(iconDisplay)
             summaryDisplay.innerHTML = value.summary;
-            console.log(value.summary);
             tempMorningDisplay.innerHTML = 'Morning: ' + value.tempMorn + unit;
             tempMinDisplay.innerHTML = 'Min: ' + value.tempMin + unit;
-            console.log(tempDayDisplay)
             tempDayDisplay.innerHTML = 'Day: ' + value.tempDay + unit;
-            console.log(tempDayDisplay.innerHTML)
             tempMaxDisplay.innerHTML = 'Max: ' + value.tempMax + unit;
             tempEveningDisplay.innerHTML = 'Evening: ' + value.tempEve + unit;
             tempNightDisplay.innerHTML = 'Night: ' + value.tempNight + unit;
