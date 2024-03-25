@@ -5,7 +5,8 @@ import { STATES }  from './db/states.js';
 import getGeocodingAPI from './src/scripts/getGeocodingAPI.js';
 import getCoordinates from './src/scripts/getCoordinates.js';
 import checkWeather from './src/scripts/checkWeather.js';
-import displayWeather from './src/scripts/displayWeather.js';
+import parseData from './src/scripts/parseData.js';
+import displayData from './src/scripts/displayData.js';
 
 // Creates options for State and Country Select menus
 const countrySelect = document.getElementById('country-select');
@@ -19,14 +20,16 @@ const searchBarHandler = async (e) => {
     const searchBarInput = document.getElementById('city-search').value;
     const countryCode = countrySelect.options[countrySelect.selectedIndex].value;
     const state = stateSelect.options[stateSelect.selectedIndex].value;
-    const unit = document.getElementById('unit-select').value;
+    const systemOfMeasurement = document.getElementById('unit-select').value;
+    const unit = systemOfMeasurement === 'imperial' ? '°F' : '°C';
     const geocodingAPI = await getGeocodingAPI(searchBarInput, state, countryCode)
-    console.log(geocodingAPI);
+    // console.log(geocodingAPI);
     const coordinates = await getCoordinates(geocodingAPI);
-    console.log('coordinates: ', coordinates);
-    const data = await checkWeather(coordinates, unit);
-    console.log('data: ', data);
-    displayWeather(data);
+    // console.log('coordinates: ', coordinates);
+    const data = await checkWeather(coordinates);
+    // console.log('data: ', data);
+    const weatherData = await parseData(data);
+    displayData(weatherData, unit);
 }
 searchBar.addEventListener( 'click', searchBarHandler);
 

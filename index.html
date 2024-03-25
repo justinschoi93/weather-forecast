@@ -38,32 +38,33 @@
         <section id= "forecast" class="hidden">
             <div id = "current-forecast" class="current weather-card">
                 <div class="hourly current today name" id="current-name"></div>
-                <div class="hourly current today icon" id="current-icon"></div>
+                <img class="hourly current today icon" id="current-icon"></img>
                 <div class="hourly current today description" id="current-description"></div>
                 <div class="hourly current today temperature" id="current-temperature"></div>
                 <div class="hourly current today feels-like" id="current-feels-like"></div>
                 <div class="hourly current today humidity" id="current-humidity"></div>
                 <div class="hourly current today pressure" id="current-pressure"></div>
-                <div class="hourly current today windSpeed" id="current-windSpeed"></div>
-                <div class="hourly current today windDirection" id="current-windDirection"></div>
-                <div class="today sunrise" id="current-sunsrise"></div>
+                <div class="hourly current today windSpeed" id="current-wind-speed"></div>
+                <div class="hourly current today windDirection" id="current-wind-direction"></div>
+                <div class="today sunrise" id="current-sunrise"></div>
                 <div class="today sunset" id="current-sunset"></div>
             </div>
             <div id = "five-day-forecast">
                 <div class="daily day-1 day-1-container" id="day-1-contaner">
                     <div class="daily-day-1" id="day-1-day"></div>
-                    <div class="daily-day-1" id="day-1-icon"></div>
+                    <img class="daily-day-1" id="day-1-icon"></img>
                     <div class="daily-day-1" id="day-1-summary"></div>
                     <div class="daily-day-1" id="day-1-temp-morning"></div>
                     <div class="daily-day-1" id="day-1-temp-min"></div>
+                    <div class="daily-day-1" id="day-1-temp-day"></div>
                     <div class="daily-day-1" id="day-1-temp-max"></div>
                     <div class="daily-day-1" id="day-1-temp-eve"></div>
                     <div class="daily-day-1" id="day-1-temp-night"></div>
                     <div class="daily-day-1" id="day-1-temp-feels-like"></div>
                     <div class="daily-day-1" id="day-1-humidity"></div>
                     <div class="daily-day-1" id="day-1-pressure"></div>
-                    <div class="daily-day-1" id="day-1-windSpeed"></div>
-                    <div class="daily-day-1" id="day-1-windDirection"></div>
+                    <div class="daily-day-1" id="day-1-wind-speed"></div>
+                    <div class="daily-day-1" id="day-1-wind-direction"></div>
                     <div class="daily-day-1" id="day-1-sunrise"></div>
                     <div class="daily-day-1" id="day-1-sunset"></div>
                 </div>
@@ -73,6 +74,7 @@
                     <div class="daily-day-2" id="day-2-summary"></div>
                     <div class="daily-day-2" id="day-2-temp-morning"></div>
                     <div class="daily-day-2" id="day-2-temp-min"></div>
+                    <div class="daily-day-2" id="day-2-temp-day"></div>
                     <div class="daily-day-2" id="day-2-temp-max"></div>
                     <div class="daily-day-2" id="day-2-temp-eve"></div>
                     <div class="daily-day-2" id="day-2-temp-night"></div>
@@ -90,6 +92,7 @@
                     <div class="daily-day-3" id="day-3-summary"></div>
                     <div class="daily-day-3" id="day-3-temp-morning"></div>
                     <div class="daily-day-3" id="day-3-temp-min"></div>
+                    <div class="daily-day-3" id="day-3-temp-day"></div>
                     <div class="daily-day-3" id="day-3-temp-max"></div>
                     <div class="daily-day-3" id="day-3-temp-eve"></div>
                     <div class="daily-day-3" id="day-3-temp-night"></div>
@@ -107,6 +110,7 @@
                     <div class="daily-day-4" id="day-4-summary"></div>
                     <div class="daily-day-4" id="day-4-temp-morning"></div>
                     <div class="daily-day-4" id="day-4-temp-min"></div>
+                    <div class="daily-day-4" id="day-4-temp-day"></div>
                     <div class="daily-day-4" id="day-4-temp-max"></div>
                     <div class="daily-day-4" id="day-4-temp-eve"></div>
                     <div class="daily-day-4" id="day-4-temp-night"></div>
@@ -124,6 +128,7 @@
                     <div class="daily-day-5" id="day-5-summary"></div>
                     <div class="daily-day-5" id="day-5-temp-morning"></div>
                     <div class="daily-day-5" id="day-5-temp-min"></div>
+                    <div class="daily-day-5" id="day-5-temp-day"></div>
                     <div class="daily-day-5" id="day-5-temp-max"></div>
                     <div class="daily-day-5" id="day-5-temp-eve"></div>
                     <div class="daily-day-5" id="day-5-temp-night"></div>
@@ -141,6 +146,7 @@
                     <div class="daily-day-6" id="day-6-summary"></div>
                     <div class="daily-day-6" id="day-6-temp-morning"></div>
                     <div class="daily-day-6" id="day-6-temp-min"></div>
+                    <div class="daily-day-6" id="day-6-temp-day"></div>
                     <div class="daily-day-6" id="day-6-temp-max"></div>
                     <div class="daily-day-6" id="day-6-temp-eve"></div>
                     <div class="daily-day-6" id="day-6-temp-night"></div>
@@ -158,6 +164,7 @@
                     <div class="daily-day-7" id="day-7-summary"></div>
                     <div class="daily-day-7" id="day-7-temp-morning"></div>
                     <div class="daily-day-7" id="day-7-temp-min"></div>
+                    <div class="daily-day-7" id="day-7-temp-day"></div>
                     <div class="daily-day-7" id="day-7-temp-max"></div>
                     <div class="daily-day-7" id="day-7-temp-eve"></div>
                     <div class="daily-day-7" id="day-7-temp-night"></div>
@@ -175,6 +182,7 @@
                     <div class="daily-day-8" id="day-8-summary"></div>
                     <div class="daily-day-8" id="day-8-temp-morning"></div>
                     <div class="daily-day-8" id="day-8-temp-min"></div>
+                    <div class="daily-day-8" id="day-8-temp-day"></div>
                     <div class="daily-day-8" id="day-8-temp-max"></div>
                     <div class="daily-day-8" id="day-8-temp-eve"></div>
                     <div class="daily-day-8" id="day-8-temp-night"></div>

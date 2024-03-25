@@ -1,9 +1,9 @@
-export default async function displayWeather (data) {
-    const weather = {};
+export default async function parseData (data) {
+    const weatherData = {};
     
     ///////////////////////////////////  Data
     ////// Hourly, starting with current
-    weather.current = {
+    weatherData.current = {
         name: data.name,
         icon: data.current.weather[0].icon,
         description: data.current.weather[0].description,
@@ -16,6 +16,7 @@ export default async function displayWeather (data) {
         sunrise: data.current.sunrise,
         sunset: data.current.sunset,
     };
+    weatherData.daily = {};
 
     /////// Daily, starting with tomorrow
     const day = {
@@ -28,31 +29,33 @@ export default async function displayWeather (data) {
         6: '6 days from now',
         7: '7 days from now'
     };
-    console.log(data.daily);
-
-    data.daily.forEach( (index) => {
-        // weather.daily[index] = {
-        //     day: day[index],
-        //     icon: weather[0].icon,
-        //     summary: weather[0].summary,
-        //     tempMorn: temp.morn,
-        //     tempMin: temp.min,
-        //     tempDay: temp.day,
-        //     tempMax: temp.max,
-        //     tempEve: temp.eve,
-        //     tempNight: temp.night,
-        //     feelsLike: feels_like.day,
-        //     humidity: humidity,
-        //     pressure: pressure,
-        //     windSpeed: wind_speed,
-        //     windDirection: wind_deg,
-        //     sunrise: sunrise,
-        //     sunset: sunset,
-        // }
+    // console.log(data.daily);
+    
+    data.daily.forEach( (res, index) => {
+        // console.log(obj)
+        weatherData.daily[index] = {
+            day: day[index],
+            icon: res.weather[0].icon,
+            summary: res.weather[0].summary,
+            tempMorn: res.temp.morn,
+            tempMin: res.temp.min,
+            tempDay: res.temp.day,
+            tempMax: res.temp.max,
+            tempEve: res.temp.eve,
+            tempNight: res.temp.night,
+            feelsLike: res.feels_like.day,
+            humidity: res.humidity,
+            pressure: res.pressure,
+            windSpeed: res.wind_speed,
+            windDirection: res.wind_deg,
+            sunrise: res.sunrise,
+            sunset: res.sunset,
+        }
     });
-
-    console.log(weather)
-
+    
+    
+    console.log('weatherData.daily: ', weatherData.daily);
+    return weatherData;
 }
 
 
