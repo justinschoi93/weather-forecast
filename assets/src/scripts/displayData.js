@@ -57,6 +57,7 @@ export default async function displayData (data, unit) {
             dayDisplay.innerHTML = value.day;
             iconDisplay.src = `https://openweathermap.org/img/wn/${value.icon}.png`;
             summaryDisplay.innerHTML = value.summary;
+            console.log(value.summary);
             tempMorningDisplay.innerHTML = 'Morning: ' + value.tempMorn + unit;
             tempMinDisplay.innerHTML = 'Min: ' + value.tempMin + unit;
             console.log(tempDayDisplay)

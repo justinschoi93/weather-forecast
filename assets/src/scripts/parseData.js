@@ -1,4 +1,5 @@
 export default async function parseData (data) {
+    console.log('data: ', data)
     const weatherData = {};
     
     ///////////////////////////////////  Data
@@ -36,7 +37,7 @@ export default async function parseData (data) {
         weatherData.daily[index] = {
             day: day[index],
             icon: res.weather[0].icon,
-            summary: res.weather[0].summary,
+            summary: res.summary,
             tempMorn: res.temp.morn,
             tempMin: res.temp.min,
             tempDay: res.temp.day,
@@ -127,7 +128,7 @@ export default async function parseData (data) {
 
 // // Display current weather
 // displayName.innerHTML = name;
-// displayIcon.setAttribute('src', `https://openweathermap.org/img/wn/${currentIcon}@2x.png`);
+// displayIcon.setAttribute('src', `https://openweathermap.org/img/wn/${}@2x.png`);
 // displayTemperature.innerHTML = `Current Temperature: ${parseFloat(currentTemp.toFixed(1))} ${unitDisplay}`;
 // displayFeelsLike.innerHTML = `Feels like: ${parseFloat(currentFeelsLike.toFixed(1))} ${unitDisplay}`;
 // displayTempMax.innerHTML = `High: ${parseFloat(currentTempMax.toFixed(1))} ${unitDisplay}`;
