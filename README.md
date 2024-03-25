@@ -123,3 +123,9 @@ data.daily[0]:{
 <!------------------------------- A week from today -->
 
 
+
+
+# Unsplash requirements
+photo cred?
+caption?
+unsplash logo?

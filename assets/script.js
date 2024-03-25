@@ -31,7 +31,7 @@ const searchBarHandler = async (e) => {
     const coordinates = await getCoordinates(geocodingAPI);
     const data = await checkWeather(coordinates, systemOfMeasurement);
     const weatherData = await parseData(data);
-    const imgUrl = await unsplash(weatherData.current.description); // can I do this?
+    const imgUrl = await unsplash(weatherData.current.description, searchBarInput); // can I do this?
     weatherData.imgUrl = imgUrl;
     displayData(weatherData, unit);
     const weatherCards = document.querySelectorAll('.weather-card');
