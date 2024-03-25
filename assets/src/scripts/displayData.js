@@ -2,6 +2,9 @@ export default async function displayData (data, unit) {
     if (!data) {
         throw new Error('Could not read data.');
     } else {
+        document.getElementById('main').style.backgroundImage = `url(${data.imgUrl})`;
+        console.log(document.getElementById('main'))
+
         // console.log(data);
 
         const currentName = document.getElementById('current-name');
@@ -54,9 +57,9 @@ export default async function displayData (data, unit) {
             const sunsetDisplay = document.getElementById(`day-${day}-sunset`);
             
             dayDisplay.innerHTML = value.day;
-            console.log(value.icon);
+            // console.log(value.icon);
             iconDisplay.setAttribute('src', `https://openweathermap.org/img/wn/${value.icon}.png`);
-            console.log(iconDisplay)
+            // console.log(iconDisplay)
             summaryDisplay.innerHTML = value.summary;
             tempMorningDisplay.innerHTML = 'Morning: ' + value.tempMorn + unit;
             tempMinDisplay.innerHTML = 'Min: ' + value.tempMin + unit;

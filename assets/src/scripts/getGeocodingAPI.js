@@ -13,8 +13,8 @@ export default async function getGeocodingAPI (searchBarInput, state, countryCod
         let city = searchBarInput;
         geocoding_api = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${countryCode}&appid=0b2949d3ba17a6aec298126cb969f7dc`
     }
-    // return geocoding_api;
-    return   `http://api.openweathermap.org/geo/1.0/direct?q=Seoul,410&appid=0b2949d3ba17a6aec298126cb969f7dc`;
+    return geocoding_api;
+    // return   `http://api.openweathermap.org/geo/1.0/direct?q=Seoul,410&appid=0b2949d3ba17a6aec298126cb969f7dc`;
     // return `http://api.openweathermap.org/geo/1.0/zip?zip=94117&appid=0b2949d3ba17a6aec298126cb969f7dc`
 
 };

@@ -7,6 +7,7 @@ import getCoordinates from './src/scripts/getCoordinates.js';
 import checkWeather from './src/scripts/checkWeather.js';
 import parseData from './src/scripts/parseData.js';
 import displayData from './src/scripts/displayData.js';
+import unsplash from './src/scripts/unsplash.js';
 
 // Creates options for State and Country Select menus
 const countrySelect = document.getElementById('country-select');
@@ -14,6 +15,7 @@ const stateSelect = document.getElementById('state-select');
 
 
 const searchBar = document.getElementById("search-button");
+
 const searchBarHandler = async (e) => {
     e.preventDefault();
 
@@ -29,11 +31,14 @@ const searchBarHandler = async (e) => {
     const coordinates = await getCoordinates(geocodingAPI);
     const data = await checkWeather(coordinates);
     const weatherData = await parseData(data);
+    const imgUrl = await unsplash(weatherData.current.description); // can I do this?
+    weatherData.imgUrl = imgUrl;
     displayData(weatherData, unit);
     const weatherCards = document.querySelectorAll('.weather-card');
     weatherCards.forEach( card => {
         card.classList.remove('hidden');
     });
+
 
     
 

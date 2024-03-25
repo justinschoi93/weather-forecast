@@ -1,8 +1,16 @@
 export default async function unsplash(string) {
-    const response = fetch (`https://api.unsplash.com/`);
-    const data = (await response).json()
-    
-    return data
+    console.log('UNSPLASH!')
+    const response = await fetch (`https://api.unsplash.com/search/photos?query=${string}&client_id=${token.client_id}`);
+    // https://api.unsplash.com/search/photos?query=sunny&client_id=vtb_vvIO30WyFcyoQOGtbAJAsu-gaJ5xU90E54zecWg
+    if (!response.ok) {
+        throw new Error('Could not fetch data');
+    } else {
+        // console.log(response);
+        const data = await response.json();
+        console.log(data.results[0].urls.regular);
+        const imgUrl = data.results[0].urls.regular;
+        return imgUrl;
+    }
 }
 
 
