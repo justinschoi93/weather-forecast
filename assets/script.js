@@ -19,13 +19,14 @@ const searchBarHandler = async (e) => {
     const searchBarInput = document.getElementById('city-search').value;
     const countryCode = countrySelect.options[countrySelect.selectedIndex].value;
     const state = stateSelect.options[stateSelect.selectedIndex].value;
+    const unit = document.getElementById('unit-select').value;
     const geocodingAPI = await getGeocodingAPI(searchBarInput, state, countryCode)
     console.log(geocodingAPI);
     const coordinates = await getCoordinates(geocodingAPI);
     console.log('coordinates: ', coordinates);
-    const data = await checkWeather(coordinates);
+    const data = await checkWeather(coordinates, unit);
     console.log('data: ', data);
-    // displayWeather(data);
+    displayWeather(data);
 }
 searchBar.addEventListener( 'click', searchBarHandler);
 

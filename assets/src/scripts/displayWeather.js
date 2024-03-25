@@ -4,6 +4,7 @@ export default async function displayWeather (data) {
     ///////////////////////////////////  Data
     ////// Hourly, starting with current
     weather.current = {
+        name: data.name,
         icon: data.current.weather[0].icon,
         description: data.current.weather[0].description,
         temperature: data.current.temp,
@@ -15,7 +16,7 @@ export default async function displayWeather (data) {
         sunrise: data.current.sunrise,
         sunset: data.current.sunset,
     };
-    
+
     /////// Daily, starting with tomorrow
     const day = {
         0: 'Today',
@@ -26,29 +27,31 @@ export default async function displayWeather (data) {
         5: '5 days from now',
         6: '6 days from now',
         7: '7 days from now'
-    }
- 
-    data.daily.forEach( (day, index) => {
-        weather.daily[index] = {
-            day: day[index],
-            icon: weather[0].icon,
-            description:weather[0].description,
-            tempMorn: temp.morn,
-            tempMin: temp.min,
-            tempDay: temp.day,
-            tempMax: temp.max,
-            tempEve: temp.eve,
-            tempNight: temp.night,
-            feelsLike: feels_like.day,
-            humidity: humidity,
-            pressure: pressure,
-            windSpeed: wind_speed,
-            windDirection: wind_deg,
-            sunrise: sunrise,
-            sunset: sunset,
-        }
-    })
-    
+    };
+    console.log(data.daily);
+
+    data.daily.forEach( (index) => {
+        // weather.daily[index] = {
+        //     day: day[index],
+        //     icon: weather[0].icon,
+        //     summary: weather[0].summary,
+        //     tempMorn: temp.morn,
+        //     tempMin: temp.min,
+        //     tempDay: temp.day,
+        //     tempMax: temp.max,
+        //     tempEve: temp.eve,
+        //     tempNight: temp.night,
+        //     feelsLike: feels_like.day,
+        //     humidity: humidity,
+        //     pressure: pressure,
+        //     windSpeed: wind_speed,
+        //     windDirection: wind_deg,
+        //     sunrise: sunrise,
+        //     sunset: sunset,
+        // }
+    });
+
+    console.log(weather)
 
 }
 

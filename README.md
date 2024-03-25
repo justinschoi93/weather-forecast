@@ -1,5 +1,5 @@
+
 # Module 6 Challenge - Weather App
-
 ## Technology Used 
 
 | Technology Used         | Resource URL           | 
@@ -46,7 +46,8 @@ The purpose of this project was to practice requesting, reformatting and parsing
 
 # 
 
-<!-- "current": {
+<!-- "current": 
+    data.current: {
         "dt": 1711319747,
         "sunrise": 1711315687,
         "sunset": 1711360072,
@@ -70,14 +71,55 @@ The purpose of this project was to practice requesting, reformatting and parsing
         ] -->
 
 
-<!------------------------------------------------ Hourly -->
+<!------------------------------------------------ Daily -->
 <!------------------------------- Today -->
+data.daily[0]:{
+    "temp": {
+        "day": 286.49,
+        "min": 281.07,
+        "max": 287.74,
+        "night": 281.07,
+        "eve": 282.5,
+        "morn": 285.18
+    },
+
+    "sunrise": 1711315687,
+    "sunset": 1711360072,
+    "moonrise": 1711360200,
+    "moonset": 1711315620,
+    "moon_phase": 0.5,
+    "summary": "Expect a day of partly cloudy with rain",
+    "feels_like": {
+        "day": 284.92,
+        "night": 278.47,
+        "eve": 280.12,
+        "morn": 283.74
+    },
+    "pressure": 1016,
+    "humidity": 40,
+    "dew_point": 273.18,
+    "wind_speed": 4.52,
+    "wind_deg": 80,
+    "wind_gust": 8.54,
+    "weather": [
+        {
+            "id": 501,
+            "main": "Rain",
+            "description": "moderate rain",
+            "icon": "10d"
+        }
+    ],
+    "clouds": 80,
+    "pop": 1,
+    "rain": 8.84,
+    "uvi": 2.79
+}
 <!------------------------------- Tomorrow -->
 <!------------------------------- The day after tomorrow -->
 <!------------------------------- The day after the day after tomorrow  -->
 <!------------------------------- 4 days from today -->
 <!------------------------------- 5 days from today -->
 <!------------------------------- 6 days from today -->
-<!------------------------------- 7 daus from today -->
+<!------------------------------- A week from today -->
 
 

@@ -35,26 +35,157 @@
                 </ul>
             </div>
         </section>
-        <section id="forecast" class="hidden">
-            <div id = "today" class="weather-card">
-                <div id = "name-display"></div>
-                <h4>Current Conditions</h4>
-                <img id = "icon-display" src = ""></img>
-                <div id = "temperature-display"></div>
-                <div id = "feels-like-display"></div>
-                <div id = "temp-max-display"></div>
-                <div id = "temp-min-display"></div>
-                <div id = "description-display"></div>
-                <div id = "sunrise-display"></div>
-                <div id = "sunset-display"></div>
-                <div id = "clouds-display"></div>
-                <div id = "wind-speed-display"></div>
-                <div id = "wind-direction-display"></div>
-                <div id = "humidity-display"></div>
-                <div id = "pressure-display"></div>
+        <section id= "forecast" class="hidden">
+            <div id = "current-forecast" class="current weather-card">
+                <div class="hourly current today name" id="current-name"></div>
+                <div class="hourly current today icon" id="current-icon"></div>
+                <div class="hourly current today description" id="current-description"></div>
+                <div class="hourly current today temperature" id="current-temperature"></div>
+                <div class="hourly current today feels-like" id="current-feels-like"></div>
+                <div class="hourly current today humidity" id="current-humidity"></div>
+                <div class="hourly current today pressure" id="current-pressure"></div>
+                <div class="hourly current today windSpeed" id="current-windSpeed"></div>
+                <div class="hourly current today windDirection" id="current-windDirection"></div>
+                <div class="today sunrise" id="current-sunsrise"></div>
+                <div class="today sunset" id="current-sunset"></div>
             </div>
             <div id = "five-day-forecast">
-                
+                <div class="daily day-1 day-1-container" id="day-1-contaner">
+                    <div class="daily-day-1" id="day-1-day"></div>
+                    <div class="daily-day-1" id="day-1-icon"></div>
+                    <div class="daily-day-1" id="day-1-summary"></div>
+                    <div class="daily-day-1" id="day-1-temp-morning"></div>
+                    <div class="daily-day-1" id="day-1-temp-min"></div>
+                    <div class="daily-day-1" id="day-1-temp-max"></div>
+                    <div class="daily-day-1" id="day-1-temp-eve"></div>
+                    <div class="daily-day-1" id="day-1-temp-night"></div>
+                    <div class="daily-day-1" id="day-1-temp-feels-like"></div>
+                    <div class="daily-day-1" id="day-1-humidity"></div>
+                    <div class="daily-day-1" id="day-1-pressure"></div>
+                    <div class="daily-day-1" id="day-1-windSpeed"></div>
+                    <div class="daily-day-1" id="day-1-windDirection"></div>
+                    <div class="daily-day-1" id="day-1-sunrise"></div>
+                    <div class="daily-day-1" id="day-1-sunset"></div>
+                </div>
+                <div class="daily day-2 day-2-container" id="day-2-contaner">
+                    <div class="daily-day-2" id="day-2-day"></div>
+                    <div class="daily-day-2" id="day-2-icon"></div>
+                    <div class="daily-day-2" id="day-2-summary"></div>
+                    <div class="daily-day-2" id="day-2-temp-morning"></div>
+                    <div class="daily-day-2" id="day-2-temp-min"></div>
+                    <div class="daily-day-2" id="day-2-temp-max"></div>
+                    <div class="daily-day-2" id="day-2-temp-eve"></div>
+                    <div class="daily-day-2" id="day-2-temp-night"></div>
+                    <div class="daily-day-2" id="day-2-temp-feels-like"></div>
+                    <div class="daily-day-2" id="day-2-humidity"></div>
+                    <div class="daily-day-2" id="day-2-pressure"></div>
+                    <div class="daily-day-2" id="day-2-windSpeed"></div>
+                    <div class="daily-day-2" id="day-2-windDirection"></div>
+                    <div class="daily-day-2" id="day-2-sunrise"></div>
+                    <div class="daily-day-2" id="day-2-sunset"></div>
+                </div>
+                <div class="daily day-3 day-3-container" id="day-3-contaner">
+                    <div class="daily-day-3" id="day-3-day"></div>
+                    <div class="daily-day-3" id="day-3-icon"></div>
+                    <div class="daily-day-3" id="day-3-summary"></div>
+                    <div class="daily-day-3" id="day-3-temp-morning"></div>
+                    <div class="daily-day-3" id="day-3-temp-min"></div>
+                    <div class="daily-day-3" id="day-3-temp-max"></div>
+                    <div class="daily-day-3" id="day-3-temp-eve"></div>
+                    <div class="daily-day-3" id="day-3-temp-night"></div>
+                    <div class="daily-day-3" id="day-3-temp-feels-like"></div>
+                    <div class="daily-day-3" id="day-3-humidity"></div>
+                    <div class="daily-day-3" id="day-3-pressure"></div>
+                    <div class="daily-day-3" id="day-3-windSpeed"></div>
+                    <div class="daily-day-3" id="day-3-windDirection"></div>
+                    <div class="daily-day-3" id="day-3-sunrise"></div>
+                    <div class="daily-day-3" id="day-3-sunset"></div>
+                </div>
+                <div class="daily day-4 day-4-container" id="day-4-contaner">
+                    <div class="daily-day-4" id="day-4-day"></div>
+                    <div class="daily-day-4" id="day-4-icon"></div>
+                    <div class="daily-day-4" id="day-4-summary"></div>
+                    <div class="daily-day-4" id="day-4-temp-morning"></div>
+                    <div class="daily-day-4" id="day-4-temp-min"></div>
+                    <div class="daily-day-4" id="day-4-temp-max"></div>
+                    <div class="daily-day-4" id="day-4-temp-eve"></div>
+                    <div class="daily-day-4" id="day-4-temp-night"></div>
+                    <div class="daily-day-4" id="day-4-temp-feels-like"></div>
+                    <div class="daily-day-4" id="day-4-humidity"></div>
+                    <div class="daily-day-4" id="day-4-pressure"></div>
+                    <div class="daily-day-4" id="day-4-windSpeed"></div>
+                    <div class="daily-day-4" id="day-4-windDirection"></div>
+                    <div class="daily-day-4" id="day-4-sunrise"></div>
+                    <div class="daily-day-4" id="day-4-sunset"></div>
+                </div>
+                <div class="daily day-5 day-5-container" id="day-5-contaner">
+                    <div class="daily-day-5" id="day-5-day"></div>
+                    <div class="daily-day-5" id="day-5-icon"></div>
+                    <div class="daily-day-5" id="day-5-summary"></div>
+                    <div class="daily-day-5" id="day-5-temp-morning"></div>
+                    <div class="daily-day-5" id="day-5-temp-min"></div>
+                    <div class="daily-day-5" id="day-5-temp-max"></div>
+                    <div class="daily-day-5" id="day-5-temp-eve"></div>
+                    <div class="daily-day-5" id="day-5-temp-night"></div>
+                    <div class="daily-day-5" id="day-5-temp-feels-like"></div>
+                    <div class="daily-day-5" id="day-5-humidity"></div>
+                    <div class="daily-day-5" id="day-5-pressure"></div>
+                    <div class="daily-day-5" id="day-5-windSpeed"></div>
+                    <div class="daily-day-5" id="day-5-windDirection"></div>
+                    <div class="daily-day-5" id="day-5-sunrise"></div>
+                    <div class="daily-day-5" id="day-5-sunset"></div>
+                </div>
+                <div class="daily day-6 day-6-container" id="day-6-contaner">
+                    <div class="daily-day-6" id="day-6-day"></div>
+                    <div class="daily-day-6" id="day-6-icon"></div>
+                    <div class="daily-day-6" id="day-6-summary"></div>
+                    <div class="daily-day-6" id="day-6-temp-morning"></div>
+                    <div class="daily-day-6" id="day-6-temp-min"></div>
+                    <div class="daily-day-6" id="day-6-temp-max"></div>
+                    <div class="daily-day-6" id="day-6-temp-eve"></div>
+                    <div class="daily-day-6" id="day-6-temp-night"></div>
+                    <div class="daily-day-6" id="day-6-temp-feels-like"></div>
+                    <div class="daily-day-6" id="day-6-humidity"></div>
+                    <div class="daily-day-6" id="day-6-pressure"></div>
+                    <div class="daily-day-6" id="day-6-windSpeed"></div>
+                    <div class="daily-day-6" id="day-6-windDirection"></div>
+                    <div class="daily-day-6" id="day-6-sunrise"></div>
+                    <div class="daily-day-6" id="day-6-sunset"></div>
+                </div>
+                <div class="daily day-7 day-7-container" id="day-7-contaner">
+                    <div class="daily-day-7" id="day-7-day"></div>
+                    <div class="daily-day-7" id="day-7-icon"></div>
+                    <div class="daily-day-7" id="day-7-summary"></div>
+                    <div class="daily-day-7" id="day-7-temp-morning"></div>
+                    <div class="daily-day-7" id="day-7-temp-min"></div>
+                    <div class="daily-day-7" id="day-7-temp-max"></div>
+                    <div class="daily-day-7" id="day-7-temp-eve"></div>
+                    <div class="daily-day-7" id="day-7-temp-night"></div>
+                    <div class="daily-day-7" id="day-7-temp-feels-like"></div>
+                    <div class="daily-day-7" id="day-7-humidity"></div>
+                    <div class="daily-day-7" id="day-7-pressure"></div>
+                    <div class="daily-day-7" id="day-7-windSpeed"></div>
+                    <div class="daily-day-7" id="day-7-windDirection"></div>
+                    <div class="daily-day-7" id="day-7-sunrise"></div>
+                    <div class="daily-day-7" id="day-7-sunset"></div>
+                </div>
+                <div class="daily day-8 day-8-container" id="day-8-contaner">
+                    <div class="daily-day-8" id="day-8-day"></div>
+                    <div class="daily-day-8" id="day-8-icon"></div>
+                    <div class="daily-day-8" id="day-8-summary"></div>
+                    <div class="daily-day-8" id="day-8-temp-morning"></div>
+                    <div class="daily-day-8" id="day-8-temp-min"></div>
+                    <div class="daily-day-8" id="day-8-temp-max"></div>
+                    <div class="daily-day-8" id="day-8-temp-eve"></div>
+                    <div class="daily-day-8" id="day-8-temp-night"></div>
+                    <div class="daily-day-8" id="day-8-temp-feels-like"></div>
+                    <div class="daily-day-8" id="day-8-humidity"></div>
+                    <div class="daily-day-8" id="day-8-pressure"></div>
+                    <div class="daily-day-8" id="day-8-windSpeed"></div>
+                    <div class="daily-day-8" id="day-8-windDirection"></div>
+                    <div class="daily-day-8" id="day-8-sunrise"></div>
+                    <div class="daily-day-8" id="day-8-sunset"></div>
+                </div>
             </div>
         </section>
     </div>
