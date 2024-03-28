@@ -3,7 +3,19 @@ export default async function displayData (data, unit) {
         throw new Error('Could not read data.');
     } else {
         // Sets background image to HD photo from Unsplash
-        document.getElementById('main').style.backgroundImage = `url(${data.imgUrl})`;
+        document.getElementById('main').style.backgroundImage = `url(${data.imgData.imgUrl})`;
+        const footer = document.getElementById('footer');
+        const photoCredit = document.createElement('p').innerHTML = 'Photo by ' + data.imgData.username + ' on Unsplash';
+        const hyperlink = document.createElement('a').className = unsplash-link;
+            hyperlink.href = data.imgData.imgUrl;
+        const unsplashLink = document.createElement('p').className = unsplash-link;
+            unsplashLink.innerHTML = `Click on or hover over for unsplash link`;
+
+            //Still need to add hyperlink to the footer
+        footer.appendChild(photoCredit);
+
+
+
 
         // Grabs display elements
         const currentName = document.getElementById('current-name');
@@ -19,6 +31,7 @@ export default async function displayData (data, unit) {
         const currentSunset = document.getElementById('current-sunset');
 
         // Displays current weather data
+        console.log("Displayed data: ", data)
         currentName.innerHTML = 'Location: ' + data.current.name;
         currentIcon.src = `https://openweathermap.org/img/wn/${data.current.icon}@2x.png`; 
         currentDescription.innerHTML = 'Description: ' + data.current.description;
@@ -31,7 +44,7 @@ export default async function displayData (data, unit) {
         // currentSunrise.innerHTML = 'Sunrise: ' + data.current.sunrise;
         // currentSunset.innerHTML = 'Sunrise: ' + data.current.sunset;
         
-        // console.log(data.daily);
+        console.log("displaying predictions!");
         Object.values(data.daily).forEach((value, index) => {
             // console.log(value, index);
             const day = index + 1;

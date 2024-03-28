@@ -1,16 +1,19 @@
 export default async function unsplash(string, location) {
-    console.log(string)
+    
+    const result = {};
     const response = await fetch (`https://api.unsplash.com/search/photos?query=${string}%20${location}&client_id=${token.client_id}`);
-    console.log(response)
+
     if (!response.ok) {
         throw new Error('Could not fetch data');
     } else {
         // console.log(response);
         const data = await response.json();
-        console.log(data);
+        console.log('unsplashData: ', data);
         // console.log(data.results[0].urls.regular);
-        const imgUrl = data.results[0].urls.raw;
-        return imgUrl;
+        result.imgUrl = data.results[0].urls.raw;
+        result.username = data.results[0].user.username; 
+        console.log('unsplash url and username: ', result)
+        return result;
     }
 }
 

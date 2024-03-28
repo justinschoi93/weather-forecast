@@ -31,19 +31,18 @@ const searchBarHandler = async (e) => {
     const coordinates = await getCoordinates(geocodingAPI);
     const data = await checkWeather(coordinates, systemOfMeasurement);
     const weatherData = await parseData(data);
-    const imgUrl = await unsplash(weatherData.current.description, searchBarInput); // can I do this?
-    weatherData.imgUrl = imgUrl;
+    const imgData = await unsplash(weatherData.current.description, searchBarInput);
+    weatherData.imgData = imgData;
+    // console.log(imgData.results[Math.floor(Math.random() * 10)].slug);
+    // weatherData.imgUrl = imgUrl;
     displayData(weatherData, unit);
     const weatherCards = document.querySelectorAll('.weather-card');
     weatherCards.forEach( card => {
         card.classList.remove('hidden');
     });
 
-
-    
-
-
 }
+
 searchBar.addEventListener( 'click', searchBarHandler);
 
 document.addEventListener('DOMContentLoaded', () => {

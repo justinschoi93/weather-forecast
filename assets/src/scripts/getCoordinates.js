@@ -11,6 +11,7 @@ export default async function getCoordinates (geocodingAPI) {
                 result.lat = data.lat;
                 result.lon = data.lon;
                 result.name = data.name;
+                console.log(result);
             return result;
         }
     } else {
@@ -25,6 +26,7 @@ export default async function getCoordinates (geocodingAPI) {
                     result.lat = data[0].lat;
                     result.lon = data[0].lon;
                     result.name = data[0].name;
+                    console.log(result);
                 return result;
             }
         }

@@ -1,5 +1,5 @@
 export default async function parseData (data) {
-    console.log('data: ', data)
+    // console.log('data: ', data)
     const weatherData = {};
     
     ///////////////////////////////////  Data
@@ -55,7 +55,7 @@ export default async function parseData (data) {
     });
     
     
-    console.log('weatherData.daily: ', weatherData.daily);
+    console.log('Parsed Data: ', weatherData.daily);
     return weatherData;
 }
 

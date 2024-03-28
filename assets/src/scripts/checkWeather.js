@@ -8,6 +8,8 @@ export default async function checkWeather ({lat, lon, name}, systemOfMeasuremen
     } else {
         const data = await response.json();
         data.name = name;
+
+        console.log('raw data: ', data)
         
         return data;
     }
