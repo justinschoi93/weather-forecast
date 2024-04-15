@@ -121,6 +121,13 @@ button:hover {
     flex-grow: 1;
 }
 
+#five-day-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
 #today div, #five-day-forecast div {
     /* margin-bottom: 5px;; */
 }
