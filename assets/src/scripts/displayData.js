@@ -5,10 +5,14 @@ export default async function displayData (data, unit) {
         // Sets background image to HD photo from Unsplash
         document.getElementById('main').style.backgroundImage = `url(${data.imgData.imgUrl})`;
         const footer = document.getElementById('footer');
-        const photoCredit = document.createElement('p').innerHTML = 'Photo by ' + data.imgData.username + ' on Unsplash';
-        const hyperlink = document.createElement('a').className = unsplash-link;
+        const photoCredit = document.createElement('p')
+            photoCredit.innerHTML = 'Photo by ' + data.imgData.username + ' on Unsplash';
+        const hyperlink = document.createElement('a')
+            hyperlink.classList.add('unsplash-link');
+            console.log(hyperlink);    
             hyperlink.href = data.imgData.imgUrl;
-        const unsplashLink = document.createElement('p').className = unsplash-link;
+        const unsplashLink = document.createElement('p')
+            unsplashLink.classList.add('unsplash-link');
             unsplashLink.innerHTML = `Click on or hover over for unsplash link`;
 
             //Still need to add hyperlink to the footer

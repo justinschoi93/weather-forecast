@@ -33,6 +33,7 @@ const searchBarHandler = async (e) => {
     const weatherData = await parseData(data);
     const imgData = await unsplash(weatherData.current.description, searchBarInput);
     weatherData.imgData = imgData;
+    
     // console.log(imgData.results[Math.floor(Math.random() * 10)].slug);
     // weatherData.imgUrl = imgUrl;
     displayData(weatherData, unit);

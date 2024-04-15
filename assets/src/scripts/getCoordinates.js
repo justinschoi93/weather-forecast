@@ -1,3 +1,5 @@
+import  updateRecentHistory  from './recentHistory.js';
+
 export default async function getCoordinates (geocodingAPI) {
     if (geocodingAPI.includes('zip')) {
 
@@ -11,6 +13,8 @@ export default async function getCoordinates (geocodingAPI) {
                 result.lat = data.lat;
                 result.lon = data.lon;
                 result.name = data.name;
+
+                updateRecentHistory(result);
                 console.log(result);
             return result;
         }
@@ -26,6 +30,8 @@ export default async function getCoordinates (geocodingAPI) {
                     result.lat = data[0].lat;
                     result.lon = data[0].lon;
                     result.name = data[0].name;
+
+                    updateRecentHistory(result);
                     console.log(result);
                 return result;
             }
